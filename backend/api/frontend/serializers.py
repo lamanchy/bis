@@ -57,7 +57,7 @@ class ModelSerializer(DRFModelSerializer):
         info = model_meta.get_field_info(self.Meta.model)
         return [field_name for field_name, relation_info in info.relations.items() if (
                 isinstance(relation_info.model_field, ManyToManyField) or
-                isinstance(getattr(relation_info.related_model, relation_info.to_field or None, None), ManyToManyField)
+                isinstance(getattr(relation_info.related_model, relation_info.to_field or '', None), ManyToManyField)
         )]
 
     @property
