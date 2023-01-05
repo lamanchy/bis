@@ -2,10 +2,10 @@ from django.utils.timezone import now
 from rest_framework.viewsets import ReadOnlyModelViewSet
 
 from administration_units.models import AdministrationUnit
-from event.models import Event
-from opportunities.models import Opportunity
 from api.web.filters import EventFilter, OpportunityFilter, AdministrationUnitFilter
 from api.web.serializers import EventSerializer, OpportunitySerializer, AdministrationUnitSerializer
+from event.models import Event
+from opportunities.models import Opportunity
 
 
 class EventViewSet(ReadOnlyModelViewSet):
@@ -13,9 +13,7 @@ class EventViewSet(ReadOnlyModelViewSet):
     filterset_class = EventFilter
 
     def get_queryset(self):
-        queryset = Event.objects.filter(
-            start__gte=now()
-        ).exclude(
+        queryset = Event.objects.exclude(
             propagation__isnull=True
         ).order_by('start').select_related(
             'location',
@@ -50,6 +48,7 @@ class OpportunityViewSet(ReadOnlyModelViewSet):
     )
     serializer_class = OpportunitySerializer
     filterset_class = OpportunityFilter
+
 
 class AdministrationUnitViewSet(ReadOnlyModelViewSet):
     queryset = AdministrationUnit.objects.filter(

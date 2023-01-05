@@ -44,6 +44,13 @@ class EventFilter(FilterSet):
     duration__lte = NumberFilter(field_name='duration', lookup_expr='gte')
     duration__gte = NumberFilter(field_name='duration', lookup_expr='lte')
 
+    start__lte = DateFilter(field_name='start', lookup_expr='lte')
+    start__gte = DateFilter(field_name='start', lookup_expr='gte')
+    end__lte = DateFilter(field_name='end', lookup_expr='lte')
+    end__gte = DateFilter(field_name='end', lookup_expr='gte')
+
+    ordering = OrderingFilter(fields=['start', 'end'])
+
     class Meta:
         model = Event
         fields = []
