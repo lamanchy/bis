@@ -24,7 +24,7 @@ services:
       APP_NAME: 'bis'
       API_BASE: 'api/'
       DEBUG: 0
-      REACT_APP_SENTRY_DSN: "https://4a585dce608949c7b551ced1d9dd474c@o380102.ingest.sentry.io/6746537"
+      REACT_APP_SENTRY_DSN: https://f3a6554a5b71437682e51b0410e20c64@o4504321204027392.ingest.sentry.io/4504453023924224
 
   backend:
     container_name: bis-backend
@@ -42,7 +42,7 @@ services:
       - ./backend:/app
     environment:
       SECRET_KEY: ${SECRET_KEY}
-      SENTRY_DSN: "https://ebfb83ef0e214583aee71f7e92c40aad@o380102.ingest.sentry.io/6244753"
+      SENTRY_DSN: https://00f28fbc60bd42468f7ca9818037daa5@o4504321204027392.ingest.sentry.io/4504452985192449
       APP_HOST: backend
       APP_PORT: 8000
       DB_HOST: postgres
