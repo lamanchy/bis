@@ -2,16 +2,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
+from django.views.generic import RedirectView
 
 from bis.views import LoginView, CodeView
 
 urlpatterns = [
     # custom authentication
-    path('admin/login/', LoginView.as_view()),
+    path('admin/login/', RedirectView.as_view(url='/login', query_string=True)),
+    path('admin/code_login/', LoginView.as_view()),
     path('enter_code/', CodeView.as_view(), name='code'),
 
     path('admin/', admin.site.urls),
-    path(f'', include('rest_framework.urls')),
+    path(f'_rest_framework/', include('rest_framework.urls')),
     path(f'_nested_admin/', include('nested_admin.urls')),
     path('tinymce/', include('tinymce.urls')),
 
