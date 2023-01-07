@@ -47,8 +47,8 @@ class QualificationCategory(Model):
 
     def get_slugs(self):
         yield self.slug
-        for parent in self.parents.all():
-            yield from parent.get_slugs()
+        for child in self.included_qualifications.all():
+            yield from child.get_slugs()
 
     class Meta:
         ordering = 'id',
