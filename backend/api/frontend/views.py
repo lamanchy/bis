@@ -240,16 +240,16 @@ class UserSearchViewSet(ListModelMixin, GenericViewSet):
     )
 
 
-@extend_schema(request=GetUnknownUserRequestSerializer,
+@extend_schema(parameters=[GetUnknownUserRequestSerializer],
                responses={
                    HTTP_200_OK: UserSerializer,
                    HTTP_404_NOT_FOUND: OpenApiResponse(description='Not found'),
                    HTTP_429_TOO_MANY_REQUESTS: OpenApiResponse(description='Too many requests for first_name + '
                                                                            'last_name, try again in one day'),
                })
-@api_view(['post'])
+@api_view(['get'])
 @permission_classes([IsAuthenticated])
-@parse_request_data(GetUnknownUserRequestSerializer)
+@parse_request_data(GetUnknownUserRequestSerializer, 'query_params')
 def get_unknown_user(request, data):
     key = f"{data['first_name']}_{data['last_name']}_{request.user.id}"
     ThrottleLog.check_throttled('get_unknown_user', key, 3, 24)
