@@ -21,9 +21,7 @@ class Permissions:
 
     def can_view_all_objs(self):
         return self.user.can_see_all or \
-               self.model._meta.app_label in ['categories', 'regions'] or \
-               self.model in [BrontosaurusMovement,
-                              Location, LocationPhoto, LocationContactPerson, LocationPatron,
+               self.model in [Location, LocationPhoto, LocationContactPerson, LocationPatron,
                               AdministrationUnit, AdministrationUnitAddress, AdministrationUnitContactAddress,
                               GeneralMeeting]
 
@@ -35,7 +33,7 @@ class Permissions:
         if self.can_view_all_objs():
             return queryset
 
-        if self.model in [BrontosaurusMovement]:
+        if self.model in [BrontosaurusMovement] or self.model._meta.app_label in ['categories', 'regions']:
             return queryset
 
         queryset = self.model.filter_queryset(queryset, self)
@@ -45,6 +43,12 @@ class Permissions:
     def has_view_permission(self, obj=None):
         # individual objects are filtered using get_queryset,
         # this is used only for disabling whole admin model
+        if self.source == 'frontend':
+            return True
+
+        if self.model in [BrontosaurusMovement] or self.model._meta.app_label in ['categories', 'regions']:
+            return self.user.can_see_all
+
         if self.model in [UploadBankRecords, DashboardItem] or (not obj and self.model in [DuplicateUser]):
             return self.user.is_superuser or self.user.is_office_worker
 
@@ -55,8 +59,7 @@ class Permissions:
             return self.model in [Qualification, User, UserAddress, UserContactAddress, UserClosePerson, Feedback,
                                   DuplicateUser]
 
-        # frontend access
-        return True
+        raise RuntimeError("Should never happen")
 
     def has_add_permission(self, obj=None):
         if self.model is Feedback: return True
