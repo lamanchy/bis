@@ -8,7 +8,6 @@ class MyAdminSite(admin.AdminSite):
         '<img src="/backend_static/logo/br_white_right.png" style="height: 60px; margin: -5px 0px -5px -35px">'
         'BIS administrace')
     index_title = 'Ať žije nový BIS!'
-    site_url = 'https://brontosaurus.cz/'
     empty_value_display = 'Nevyplněno'
 
     def get_app_list(self, request):
