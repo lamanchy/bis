@@ -166,7 +166,7 @@ class ModelSerializer(DRFModelSerializer):
 
 
 class BaseAddressSerializer(ModelSerializer):
-    region = RegionSerializer()
+    region = RegionSerializer(read_only=True)
 
     class Meta:
         fields = (
@@ -175,7 +175,6 @@ class BaseAddressSerializer(ModelSerializer):
             'zip_code',
             'region',
         )
-        read_only_fields = 'region',
 
 
 class BaseContactSerializer(ModelSerializer):
