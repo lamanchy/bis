@@ -242,6 +242,10 @@ class UserAdmin(PermissionMixin, NestedModelAdminMixin, NumericFilterModelAdmin)
     list_filter = [
         AgeFilter,
 
+        list_filter_extra_title('Členství'),
+        ('memberships__year', MemberDuringYearsFilter),
+        MemberOfAdministrationUnitFilter,
+
         list_filter_extra_title('Účast na akcích'),
         ('events_where_was_as_main_organizer__start', MainOrganizerOfEventRangeFilter),
         MainOrganizerOfEventOfAdministrationUnitFilter,
@@ -250,10 +254,6 @@ class UserAdmin(PermissionMixin, NestedModelAdminMixin, NumericFilterModelAdmin)
         ('participated_in_events__event__start', ParticipatedInEventRangeFilter),
         ParticipatedInEventOfAdministrationUnitFilter,
         ('participated_in_events__event__end', FirstParticipatedInEventRangeFilter),
-
-        list_filter_extra_title('Členství'),
-        ('memberships__year', MemberDuringYearsFilter),
-        MemberOfAdministrationUnitFilter,
 
         list_filter_extra_title('Nabízená pomoc'),
         ('offers__programs', MultiSelectRelatedDropdownFilter),
