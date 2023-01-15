@@ -622,6 +622,9 @@ class Command(BaseCommand):
         b.bis_administrators.add(User.objects.get(all_emails__email='dzikilubiabloto@protonmail.com'))
         b.bis_administrators.add(User.objects.get(all_emails__email='radka@slunovrat.info'))
         b.bis_administrators.add(User.objects.get(all_emails__email='daniel.kurowski@grifart.cz'))
+        b.bis_administrators.add(
+            User.objects.create(first_name='Milan', last_name="Another", email="mountdoom@centrum.cz")
+        )
 
         b.office_workers.add(User.objects.get(all_emails__email='terca.op@seznam.cz'))
         b.office_workers.add(User.objects.get(all_emails__email='backova.karin@gmail.com'))
