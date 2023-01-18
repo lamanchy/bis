@@ -15,4 +15,5 @@ class Command(BaseCommand):
         for item in data:
             item['contact_person_id'] = User.objects.all().first().id
             item['location_id'] = Location.objects.all().first().id
+            item['image'] = '/opt' + item['image']
             Opportunity.objects.create(**item)
