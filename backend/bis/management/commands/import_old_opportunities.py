@@ -4,7 +4,7 @@ from dateutil.relativedelta import relativedelta
 from dateutil.utils import today
 from django.core.management.base import BaseCommand
 
-from bis.models import User
+from bis.models import User, Location
 from opportunities.models import Opportunity
 from other.models import DashboardItem
 
@@ -13,9 +13,6 @@ data = [OrderedDict([('id', 10), ('name', 'Budkování v Mikulčickém luhu'), (
 class Command(BaseCommand):
     def handle(self, *args, **options):
         for item in data:
-            item['contact_person_id'] = User.objects.get_or_create(all_emails__email=item['contact_email'], defaults={
-                'email': item['contact_email'],
-                'first_name': 'Prázdný',
-                'last_name': 'User',
-            })[0].id
+            item['contact_person_id'] = User.objects.all().first().id
+            item['location_id'] = Location.objects.all().first().id
             Opportunity.objects.create(**item)
