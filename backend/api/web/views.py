@@ -38,16 +38,19 @@ class EventViewSet(ReadOnlyModelViewSet):
 
 
 class OpportunityViewSet(ReadOnlyModelViewSet):
-    queryset = Opportunity.objects.filter(
-        on_web_start__lte=now(),
-        on_web_end__gte=now(),
-    ).order_by('start').select_related(
+    queryset = Opportunity.objects.order_by('start').select_related(
         'category',
         'location',
         'contact_person',
     )
     serializer_class = OpportunitySerializer
     filterset_class = OpportunityFilter
+
+    def get_queryset(self):
+        return super().get_queryset().filter(
+            on_web_start__lte=now(),
+            on_web_end__gte=now(),
+        )
 
 
 class AdministrationUnitViewSet(ReadOnlyModelViewSet):
