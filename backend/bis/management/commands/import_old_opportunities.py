@@ -12,8 +12,10 @@ data = [OrderedDict([('id', 10), ('name', 'Budkování v Mikulčickém luhu'), (
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
+        Opportunity.objects.all().delete()
+
         for item in data:
             item['contact_person_id'] = User.objects.all().first().id
             item['location_id'] = Location.objects.all().first().id
-            item['image'] = '/opt' + item['image']
+            item['image'] = '/app' + item['image']
             Opportunity.objects.create(**item)
