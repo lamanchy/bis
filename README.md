@@ -22,3 +22,7 @@
 from bis.models import User
 token = f"Token {User.objects.get(email='asdf').auth_token.key}"
 ```
+
+`git remote add dev root@dev.bis.lomic.cz:/home/git/repo.git`
+
+`git push -f dev master`
