@@ -89,7 +89,7 @@ class EventRegistrationSerializer(ModelSerializer):
 
     class Meta:
         model = EventRegistration
-        fields = 'is_registration_required', 'is_event_full', 'questionnaire'
+        fields = 'is_registration_required', 'is_event_full', 'questionnaire', 'alternative_registration_link'
 
 
 class LocationPhotoSerializer(ModelSerializer):
