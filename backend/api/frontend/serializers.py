@@ -311,6 +311,7 @@ class UserSerializer(ModelSerializer):
             'all_emails',
             'birthday',
             'close_person',
+            'subscribed_to_newsletter',
             'health_insurance_company',
             'health_issues',
             'sex',

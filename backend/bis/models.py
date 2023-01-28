@@ -124,6 +124,8 @@ class User(AbstractBaseUser):
     email = EmailField(unique=True, blank=True, null=True)
     birthday = DateField(null=True)
 
+    subscribed_to_newsletter = BooleanField(default=True)
+
     health_insurance_company = ForeignKey(HealthInsuranceCompany, related_name='users', on_delete=PROTECT, null=True,
                                           blank=True)
     health_issues = TextField(blank=True)

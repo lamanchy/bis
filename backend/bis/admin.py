@@ -213,7 +213,7 @@ class UserAdmin(PermissionMixin, NestedModelAdminMixin, NumericFilterModelAdmin)
                        'get_all_emails']
         }],
         ('Osobní informace', {
-            'fields': ('health_insurance_company', 'health_issues')
+            'fields': ('subscribed_to_newsletter', 'health_insurance_company', 'health_issues')
         }),
         ('Události', {
             'fields': ('get_events_where_was_organizer', 'get_participated_in_events')
