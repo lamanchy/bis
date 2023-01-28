@@ -254,6 +254,12 @@ class EYCACardSerializer(ModelSerializer):
             'sent_to_user',
             'valid_till',
         )
+        read_only_fields = (
+            'number',
+            'submitted_for_creation',
+            'sent_to_user',
+            'valid_till',
+        )
 
 
 class MembershipSerializer(ModelSerializer):
@@ -343,7 +349,7 @@ class UserSerializer(ModelSerializer):
 
     def get_excluded_fields(self, fields):
         if self.context['request'].user.id != fields.get('id'):
-            return ['donor']
+            return ['donor', 'eyca_card']
 
         return []
 
