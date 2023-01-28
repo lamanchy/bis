@@ -43,6 +43,8 @@ User:
     health_insurance_company: 'Pojišťovna'
     roles: 'Role'
     internal_note: 'Poznámka kanclu'
+    subscribed_to_newsletter: 'Odebírá novinky?'
+
 
 UserClosePerson:
   name: 'Rodič / blízká osoba'
