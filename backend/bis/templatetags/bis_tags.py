@@ -46,6 +46,6 @@ def user_dashboard(context, user):
 
     result = ''
     for item in items:
-        result += f'<li>{item.date}: {item.name}<br><span class="mini quiet">{item.description}</span></li>'
+        result += f'<li>{item.date.day}. {item.date.month}. {item.date.year}: {item.name}<br><span class="mini quiet">{item.description}</span></li>'
 
     return mark_safe(f'<ul>{result}</ul>')
