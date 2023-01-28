@@ -8,7 +8,7 @@ from bis.views import LoginView, CodeView
 
 urlpatterns = [
     # custom authentication
-    path('admin/login/', RedirectView.as_view(url='/login', query_string=True)),
+    path('admin/login/', RedirectView.as_view(url='/logout', query_string=True)),
     path('admin/logout/', RedirectView.as_view(url='/logout', query_string=True)),
     path('admin/code_login/', LoginView.as_view()),
     path('enter_code/', CodeView.as_view(), name='code'),
