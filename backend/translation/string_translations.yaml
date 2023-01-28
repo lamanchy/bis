@@ -44,7 +44,7 @@ event_categories:
   public__only_experiential: 'Čistě zážitková'
   public__educational: 'Vzdělávací'
   public__educational__lecture: 'Přednáška'
-  public__educational__course: 'Kurz, školení'
+  public__educational__course: 'Kurz, školení, exkurze'
   public__educational__ohb: 'OHB'
   public__educational__educational: 'Výukový program'
   public__educational__educational_with_stay: 'Pobytový výukový program'
