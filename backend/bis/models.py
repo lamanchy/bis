@@ -201,12 +201,12 @@ class User(AbstractBaseUser):
     @cached_property
     def can_see_all(self):
         return self.is_superuser or self.is_office_worker or self.is_auditor \
-               or self.is_executive
+            or self.is_executive
 
     @cached_property
     def is_staff(self):
         return self.is_superuser or self.is_office_worker or self.is_auditor \
-               or self.is_executive or self.is_education_member or self.is_board_member
+            or self.is_executive or self.is_education_member or self.is_board_member
 
     @cached_property
     def is_superuser(self):
@@ -487,6 +487,16 @@ class UserContactAddress(BaseAddress):
 @translate_model
 class UserClosePerson(BaseContact):
     user = OneToOneField(User, on_delete=CASCADE, related_name='close_person')
+
+
+@translate_model
+class EYCACard(Model):
+    user = OneToOneField(User, on_delete=CASCADE, related_name='eyca_card')
+    photo = ThumbnailImageField(upload_to='eyca_photos')
+    number = CharField(max_length=63)
+    submitted_for_creation = BooleanField(default=False)
+    sent_to_user = BooleanField(default=False)
+    valid_till = DateField(blank=True)
 
 
 @translate_model

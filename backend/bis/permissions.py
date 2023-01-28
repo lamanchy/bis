@@ -1,7 +1,7 @@
 from administration_units.models import BrontosaurusMovement, AdministrationUnit, AdministrationUnitAddress, \
     AdministrationUnitContactAddress, GeneralMeeting
 from bis.models import Qualification, User, UserAddress, UserContactAddress, UserEmail, Location, LocationPhoto, \
-    Membership, LocationContactPerson, UserClosePerson, LocationPatron
+    Membership, LocationContactPerson, UserClosePerson, LocationPatron, EYCACard
 from donations.models import Donation, UploadBankRecords, VariableSymbol, Donor
 from event.models import Event, EventDraft
 from opportunities.models import OfferedHelp, Opportunity
@@ -81,7 +81,7 @@ class Permissions:
                 return True
 
         # for any user
-        if self.model in [UserAddress, UserContactAddress, UserClosePerson, OfferedHelp, EventApplication,
+        if self.model in [UserAddress, UserContactAddress, UserClosePerson, EYCACard, OfferedHelp, EventApplication,
                           EventApplicationClosePerson, EventApplicationAddress, Answer, EventDraft]:
             if not obj or obj.has_edit_permission(self.user):
                 return True
@@ -118,7 +118,7 @@ class Permissions:
                 return True
 
         # for any user
-        if self.model in [User, UserAddress, UserContactAddress, UserClosePerson, OfferedHelp, Donor, EventDraft]:
+        if self.model in [User, UserAddress, UserContactAddress, UserClosePerson, EYCACard, OfferedHelp, Donor, EventDraft]:
             if not obj or obj.has_edit_permission(self.user):
                 return True
 

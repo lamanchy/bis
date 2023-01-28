@@ -10,7 +10,7 @@ from rest_framework.utils import model_meta
 
 from api.helpers import catch_related_object_does_not_exist
 from bis.models import User, Location, UserAddress, UserContactAddress, Membership, Qualification, UserClosePerson, \
-    LocationContactPerson, LocationPatron
+    LocationContactPerson, LocationPatron, EYCACard
 from categories.serializers import DonationSourceCategorySerializer, EventProgramCategorySerializer, \
     OrganizerRoleCategorySerializer, TeamRoleCategorySerializer, MembershipCategorySerializer, \
     QualificationCategorySerializer, HealthInsuranceCompanySerializer, SexCategorySerializer, RoleCategorySerializer, \
@@ -244,6 +244,18 @@ class UserContactAddressSerializer(BaseAddressSerializer):
         model = UserContactAddress
 
 
+class EYCACardSerializer(ModelSerializer):
+    class Meta:
+        model = EYCACard
+        fields = (
+            'photo',
+            'number',
+            'submitted_for_creation',
+            'sent_to_user',
+            'valid_till',
+        )
+
+
 class MembershipSerializer(ModelSerializer):
     category = MembershipCategorySerializer()
 
@@ -291,6 +303,7 @@ class UserSerializer(ModelSerializer):
     memberships = MembershipSerializer(many=True, read_only=True)
     qualifications = QualificationSerializer(many=True, read_only=True)
     display_name = SerializerMethodField()
+    eyca_card = EYCACardSerializer(allow_null=True)
 
     health_insurance_company = HealthInsuranceCompanySerializer()
     sex = SexCategorySerializer()
@@ -322,6 +335,7 @@ class UserSerializer(ModelSerializer):
             'offers',
             'address',
             'contact_address',
+            'eyca_card',
             'memberships',
             'qualifications',
         )

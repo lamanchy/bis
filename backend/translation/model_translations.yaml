@@ -53,13 +53,22 @@ UserClosePerson:
 UserAddress:
   name: 'Adresa uživatele'
   name_plural: 'Adresa uživatele'
+EYCACard:
+  name: 'EYCA karta'
+  name_plural: 'EYCA karty'
+  fields:
+    photo: 'Fotka'
+    number: 'Číslo kartičky'
+    submitted_for_creation: 'Předáno k výrobě'
+    sent_to_user: 'Odesláno uživateli'
+    valid_till: 'Platnost do'
+
 UserContactAddress:
   name: 'Kontaktní adresa uživatele'
   name_plural: 'Kontaktní adresa uživatele'
 UserEmail:
   name: 'E-mail uživatele'
   name_plural: 'E-maily uživatele'
-  fields:
 DuplicateUser:
   name: 'Duplicita'
   name_plural: 'Duplicity'

@@ -140,6 +140,10 @@ class UserContactAddressAdmin(PermissionMixin, NestedTabularInline):
     model = UserContactAddress
 
 
+class EYCACardAdmin(PermissionMixin, NestedTabularInline):
+    model = EYCACard
+
+
 class UserOfferedHelpAdmin(PermissionMixin, NestedStackedInline):
     model = OfferedHelp
 
@@ -285,6 +289,7 @@ class UserAdmin(PermissionMixin, NestedModelAdminMixin, NumericFilterModelAdmin)
                    ClosePersonAdmin,
                    QualificationAdmin, AllMembershipAdmin, MembershipAdmin,
                    UserOfferedHelpAdmin,
+                   EYCACardAdmin,
                    DuplicateUserAdminInline]
         if request.user.is_superuser:
             inlines.append(UserEmailAdmin)
