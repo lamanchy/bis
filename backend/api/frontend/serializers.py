@@ -520,6 +520,7 @@ class LocationSerializer(ModelSerializer):
             'description',
             'patron',
             'contact_person',
+            'is_fully_specified',
             'for_beginners',
             'is_full',
             'is_unexplored',

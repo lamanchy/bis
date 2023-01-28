@@ -122,6 +122,7 @@ class LocationExportSerializer(ModelSerializer):
         model = Location
         fields = (
             'name',
+            'is_fully_specified',
             'for_beginners',
             'is_full',
             'is_unexplored',

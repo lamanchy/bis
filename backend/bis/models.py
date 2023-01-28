@@ -35,6 +35,7 @@ class Location(Model):
     address = CharField(max_length=255, blank=True)
     gps_location = PointField(null=True)
 
+    is_fully_specified = BooleanField(default=False)
     for_beginners = BooleanField(default=False)
     is_full = BooleanField(default=False)
     is_unexplored = BooleanField(default=False)

@@ -136,6 +136,7 @@ class Command(BaseCommand):
 
             location = Location.objects.update_or_create(_import_id=f'm{_import_id}', defaults=dict(
                 name=feature['properties']['name'],
+                is_fully_specified=True,
                 **self.categories_map[feature['properties']['category']],
                 **self.parse_attributes(data['attributes_values']),
                 gps_location=point,

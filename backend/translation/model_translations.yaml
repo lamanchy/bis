@@ -18,6 +18,7 @@ Location:
     address: 'Adresa'
     web: 'Web'
     gps_location: 'GPS lokace'
+    is_fully_specified: 'Plnohodnotná lokalita?'
 
 LocationPhoto:
   name: 'Fotka lokality'
