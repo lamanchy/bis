@@ -77,6 +77,7 @@ class Questionnaire(Model):
 @translate_model
 class Question(Model):
     question = CharField(max_length=255)
+    data = JSONField(default=dict)
     is_required = BooleanField(default=True)
     order = PositiveIntegerField(default=0)
     questionnaire = ForeignKey(Questionnaire, on_delete=CASCADE, related_name='questions')
@@ -102,6 +103,7 @@ class Answer(Model):
     question = ForeignKey(Question, on_delete=CASCADE, related_name='answers')
     application = ForeignKey(EventApplication, on_delete=CASCADE, related_name='answers')
     answer = TextField()
+    data = JSONField(default=dict)
 
     class Meta:
         ordering = 'question__order',

@@ -73,7 +73,7 @@ class EventPropagationSerializer(ModelSerializer):
 class QuestionSerializer(ModelSerializer):
     class Meta:
         model = Question
-        fields = 'id', 'question', 'is_required', 'order'
+        fields = 'id', 'question', 'data', 'is_required', 'order'
 
 
 class QuestionnaireSerializer(ModelSerializer):

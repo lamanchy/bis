@@ -618,6 +618,7 @@ class QuestionSerializer(ModelSerializer):
         fields = (
             'id',
             'question',
+            'data',
             'is_required',
             'order',
         )
@@ -647,6 +648,7 @@ class AnswerSerializer(ModelSerializer):
         fields = (
             'question',
             'answer',
+            'data',
         )
 
 

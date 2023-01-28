@@ -322,6 +322,7 @@ Question:
   name_plural: 'Otázky dotazníku'
   fields:
     question: 'Otázka'
+    data: 'Data'
     is_required: 'Nutno vyplnit?'
     questionnaire: 'Dotazník'
 
@@ -332,6 +333,7 @@ Answer:
     question: 'Otázka'
     application: 'Přihláška na akci'
     answer: 'Odpověď'
+    data: 'Data'
 
 
 # categories
