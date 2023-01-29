@@ -77,7 +77,7 @@ class Permissions:
         if self.model is DuplicateUser and not obj: return False
 
         if self.user.is_education_member:
-            if self.model in [User, Qualification, DuplicateUser, Feedback]:
+            if self.model in [User, Qualification, DuplicateUser]:
                 return True
 
         # for any user
