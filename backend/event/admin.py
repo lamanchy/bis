@@ -10,6 +10,7 @@ from bis.admin_permissions import PermissionMixin
 from bis.helpers import AgeStats
 from event.models import *
 from questionnaire.admin import QuestionnaireAdmin, EventApplicationAdmin
+from translation.translate import _
 from xlsx_export.export import export_to_xlsx
 
 
@@ -151,7 +152,7 @@ class EventAdmin(PermissionMixin, NestedModelAdmin):
                    'get_event_record_photos_uploaded', 'get_event_finance_receipts_uploaded'
     list_select_related = 'location', 'category', 'program', 'record'
 
-    @admin.display(description='Administrativní jednotky')
+    @admin.display(description=_('models.AdministrationUnit.name_plural'))
     def get_administration_units(self, obj):
         return mark_safe('<br>'.join([str(au) for au in obj.administration_units.all()]))
 

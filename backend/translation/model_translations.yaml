@@ -160,7 +160,7 @@ Membership:
   name: 'Členství'
   name_plural: 'Členství'
   fields:
-    administration_unit: 'Administrativní jednotka'
+    administration_unit: 'Organizační jednotka'
     year: 'Členství v roce'
     category: 'Typ'
 
@@ -196,7 +196,7 @@ Event:
       - 'Webová adresa pro připojení'
       - 'Vyplňte, pokud se akce koná online'
     number_of_sub_events: 'Počet akcí v uvedeném období'
-    administration_units: 'Administrativní jednotky'
+    administration_units: 'Organizační jednotky'
     main_organizer: 'Hlavní organizátor'
     other_organizers: 'Všichni organizátoři'
     is_attendance_list_required: 'Je prezenční listina vyžadována?'
