@@ -227,6 +227,7 @@ class AdministrationUnitSerializer(ModelSerializer):
             'bank_account_number',
             'existed_since',
             'existed_till',
+            'gps_location',
             'category',
             'chairman',
             'vice_chairman',

@@ -1,5 +1,6 @@
 from dateutil.utils import today
 from django.contrib import admin
+from django.contrib.gis.admin import OSMGeoAdmin
 from django.utils.safestring import mark_safe
 from more_admin_filters import MultiSelectRelatedDropdownFilter
 from nested_admin.nested import NestedModelAdmin, NestedTabularInline
@@ -28,7 +29,7 @@ class GeneralMeetingAdmin(PermissionMixin, NestedTabularInline):
 
 
 @admin.register(AdministrationUnit)
-class AdministrationUnitAdmin(PermissionMixin, NestedModelAdmin):
+class AdministrationUnitAdmin(PermissionMixin, OSMGeoAdmin):
     list_display = 'abbreviation', 'is_active', 'address', 'phone', 'get_email', 'www', 'chairman', 'category'
     search_fields = 'abbreviation', 'name', 'address__city', 'address__street', 'address__zip_code', 'phone', 'email'
     list_filter = IsAdministrationUnitActiveFilter, 'category', 'is_for_kids', \

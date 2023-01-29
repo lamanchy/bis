@@ -111,6 +111,7 @@ AdministrationUnit:
     data_box: 'Datová schránka'
     facebook: 'Facebook'
     instagram: 'Instagram'
+    gps_location: 'GPS lokace'
 
 AdministrationUnitAddress:
   name: 'Adresa'

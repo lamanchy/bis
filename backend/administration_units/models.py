@@ -28,6 +28,7 @@ class AdministrationUnit(Model):
     bank_account_number = CharField(max_length=63, blank=True)
     data_box = CharField(max_length=63, blank=True)
     custom_statues = FileField(upload_to='custom_statues', blank=True)
+    gps_location = PointField(null=True)
 
     existed_since = DateField(null=True)
     existed_till = DateField(null=True, blank=True)
