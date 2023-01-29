@@ -3,13 +3,16 @@ import re
 from django.apps import apps
 from django.conf import settings
 from django.core.exceptions import ValidationError
-from django.db.models import Model, CharField, EmailField, ForeignKey, PROTECT, CheckConstraint, Q
+from django.db.models import Model, CharField, EmailField, ForeignKey, PROTECT
 from django.db.models.functions import Length
 from phonenumber_field.modelfields import PhoneNumberField
+
+from translation.translate import translate_model
 
 CharField.register_lookup(Length)
 
 
+@translate_model
 class BaseContact(Model):
     first_name = CharField(max_length=63)
     last_name = CharField(max_length=63)
@@ -32,6 +35,7 @@ class BaseContact(Model):
         return f'{self.first_name} {self.last_name}'
 
 
+@translate_model
 class BaseAddress(Model):
     street = CharField(max_length=127)
     city = CharField(max_length=63)

@@ -1,12 +1,20 @@
+BaseAddress:
+  name: 'Adresa'
+  name_plural: 'Adresy'
+BaseContact:
+  name: 'Kontakt'
+  name_plural: 'Kontakty'
+
 Location:
   name: 'Lokalita'
   name_plural: 'Lokality'
   fields:
+    name: 'Název lokality'
     patron: 'Kontakt v hnutí'
     contact_person: 'Kontakt na lokalitě'
     for_beginners: 'Vhodné pro začínající organizátory?'
     is_full: 'Je lokalita plně vytížená?'
-    is_unexplored: 'Nová lokalita'
+    is_unexplored: 'Je lokalita nová/nevyužívaná?'
     program: 'Program lokality'
     accessibility_from_prague: 'Dostupnost z Prahy'
     accessibility_from_brno: 'Dostupnost z Brna'
@@ -81,9 +89,14 @@ AdministrationUnit:
   name: 'Organizační jednotka'
   name_plural: 'Organizační jednotky'
   fields:
-    abbreviation: 'Zkratka'
+    name:
+      - "Oficiální název"
+      - "Název z rejstříku, např. ZČ HB Zvonek"
+    abbreviation:
+      - 'Zkrácený název'
+      - "Běžně užívaný název, např. Zvonek, Orchis..."
     phone: 'Telefon'
-    category: 'Typ'
+    category: 'Typ jednotky'
     board_members: 'Členové představenstva'
     bank_account_number: 'Číslo účtu'
     chairman: 'Předseda'
@@ -91,7 +104,7 @@ AdministrationUnit:
     existed_since: 'Datum vzniku'
     existed_till: 'Datum zániku'
     ic: 'IČO'
-    is_for_kids: 'BRĎO?'
+    is_for_kids: 'Jedná se o BRĎO oddíl?'
     manager: 'Hospodář'
     www: 'Webové stránky'
     custom_statues: 'Vlastní stanovy'
@@ -121,7 +134,7 @@ BrontosaurusMovement:
   name_plural: 'Přístupy'
   fields:
     director:
-      - 'Ředitel'
+      - 'Programový ředitel'
       - 'Má veškerá oprávnění'
     finance_director:
       - 'Finanční ředitel'
@@ -130,7 +143,7 @@ BrontosaurusMovement:
       - 'Správci BISu'
       - 'Mají veškeré oprávnění'
     office_workers:
-      - 'Kancl'
+      - 'Pracovníci kanceláře'
       - 'Mohou měnit vše kromě základních oprávnění'
     audit_committee:
       - 'KRK - Kontrolní a revizní komise'
@@ -139,8 +152,8 @@ BrontosaurusMovement:
       - 'VV - Výkonný výbor'
       - 'Vidí vše, nemohou editovat'
     education_members:
-      - 'EDU'
-      - 'Vidí pouze uživatele a mohou je editovat pouze kvalifikaci'
+      - 'EDU - konzultanti a instruktoři'
+      - 'Vidí pouze uživatele a mohou editovat pouze jejich kvalifikaci'
 
 
 Membership:
