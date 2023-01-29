@@ -67,6 +67,9 @@ def translate_model(model):
 def _(string, **kwargs):
     parts = string.split('.')
     translation = string_translations
+    if parts[0] == 'models':
+        translation = model_translations
+        parts.pop(0)
     for part in parts:
         translation = translation[part]
 

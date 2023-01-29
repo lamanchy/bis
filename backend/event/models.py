@@ -147,7 +147,7 @@ class EventFinance(Model):
         ordering = 'id',
 
     def __str__(self):
-        return f'Finance k události {self.event}'
+        return f'Finance k akci {self.event}'
 
     def has_edit_permission(self, user):
         return self.event.has_edit_permission(user)
@@ -223,7 +223,7 @@ class EventPropagation(Model):
         ordering = 'id',
 
     def __str__(self):
-        return f'Propagace k události {self.event}'
+        return f'Propagace k akci {self.event}'
 
     def has_edit_permission(self, user):
         return self.event.has_edit_permission(user)
@@ -252,7 +252,7 @@ class EventRegistration(Model):
         ordering = 'id',
 
     def __str__(self):
-        return f'Registrace k události {self.event}'
+        return f'Registrace k akci {self.event}'
 
     def has_edit_permission(self, user):
         return self.event.has_edit_permission(user)
@@ -286,7 +286,7 @@ class EventRecord(Model):
         ordering = '-event__start',
 
     def __str__(self):
-        return f'Záznam k události {self.event}'
+        return f'Záznam z akce {self.event}'
 
     def has_edit_permission(self, user):
         return self.event.has_edit_permission(user)

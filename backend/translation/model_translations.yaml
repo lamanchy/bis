@@ -78,8 +78,8 @@ DuplicateUser:
 
 
 AdministrationUnit:
-  name: 'Organizující jednotka'
-  name_plural: 'Organizující jednotky'
+  name: 'Organizační jednotka'
+  name_plural: 'Organizační jednotky'
   fields:
     abbreviation: 'Zkratka'
     phone: 'Telefon'
@@ -103,23 +103,22 @@ AdministrationUnitAddress:
   name: 'Adresa'
   name_plural: 'Adresa'
   fields:
-    administration_unit: 'Organizující jednotka'
+    administration_unit: 'Organizační jednotka'
 AdministrationUnitContactAddress:
   name: 'Kontaktní adresa'
   name_plural: 'Kontaktní adresa'
   fields:
-    administration_unit: 'Organizující jednotka'
+    administration_unit: 'Organizační jednotka'
 GeneralMeeting:
   name: 'Valná hromada'
   name_plural: 'Valné hromady'
   fields:
-    administration_unit: 'Organizující jednotka'
-
+    administration_unit: 'Organizační jednotka'
 
 
 BrontosaurusMovement:
-  name: 'Hnutí Brontosaurus'
-  name_plural: 'Hnutí Brontosaurus'
+  name: 'Přístupy'
+  name_plural: 'Přístupy'
   fields:
     director:
       - 'Ředitel'
@@ -162,8 +161,8 @@ Qualification:
     approved_by: 'Schválilo'
 
 Event:
-  name: 'Událost'
-  name_plural: 'Události'
+  name: 'Akce'
+  name_plural: 'Akce'
   fields:
     group: 'Druh'
     category: 'Typ'
@@ -182,7 +181,7 @@ Event:
     duration: 'Délka trvání akce'
     online_link:
       - 'Webová adresa pro připojení'
-      - 'Vyplňte, pokud se událost koná online'
+      - 'Vyplňte, pokud se akce koná online'
     number_of_sub_events: 'Počet akcí v uvedeném období'
     administration_units: 'Administrativní jednotky'
     main_organizer: 'Hlavní organizátor'
@@ -190,8 +189,8 @@ Event:
     is_attendance_list_required: 'Je prezenční listina vyžadována?'
 
 EventFinance:
-  name: 'Finance události'
-  name_plural: 'Finance události'
+  name: 'Finance akce'
+  name_plural: 'Finance akce'
   fields:
     category: 'Kategorie dle financí'
     grant_category: 'Typ grantu'
@@ -205,12 +204,12 @@ EventFinanceReceipt:
   name: 'Účtenka'
   name_plural: 'Účtenky'
   fields:
-    finance: 'Finance události'
+    finance: 'Finance akce'
     receipt: 'Účtenky'
 
 EventPropagation:
-  name: 'Propagace události'
-  name_plural: 'Propagace události'
+  name: 'Propagace akce'
+  name_plural: 'Propagace akce'
   fields:
     is_shown_on_web: 'Je akce zobrazena na webu?'
     vip_propagation: 'Je akce propagována v rámci VIP propagace?'
@@ -246,8 +245,8 @@ EventPropagation:
       - 'Nechte prázdné pokud chcete použít e-mail kontaktní osoby'
 
 VIPEventPropagation:
-  name: 'VIP propagace události'
-  name_plural: 'VIP propagace události'
+  name: 'VIP propagace akce'
+  name_plural: 'VIP propagace akce'
   fields:
     event_propagation: 'Propagace'
     goals_of_event:
@@ -273,8 +272,8 @@ EventRegistration:
     alternative_registration_link: 'Alternativní adresa pro přihlášení'
 
 EventRecord:
-  name: 'Záznam z události'
-  name_plural: 'Záznam z události'
+  name: 'Záznam z akce'
+  name_plural: 'Záznam z akce'
   fields:
     total_hours_worked: 'Odpracováno člověkohodin'
     comment_on_work_done: 'Okomentování vykonané práce'
@@ -291,26 +290,26 @@ EventContact:
   name: 'Kontakt z akce'
   name_plural: 'Kontakty z akce'
   fields:
-    record: 'Záznam z události'
+    record: 'Záznam z akce'
 
 EventPropagationImage:
   name: 'Obrázek k propagaci'
   name_plural: 'Obrázky k propagaci'
   fields:
-    propagation: 'Propagace události'
+    propagation: 'Propagace akce'
 
 EventPhoto:
   name: 'Fotka z akce'
   name_plural: 'Fotky z akce'
   fields:
-    record: 'Záznam události'
+    record: 'Záznam z akce'
 
 # questionnaire
 EventApplication:
   name: 'Přihláška na akci'
   name_plural: 'Přihlášky na akci'
   fields:
-    event_registration: 'Registrace k události'
+    event_registration: 'Registrace k akci'
     state: 'Stav'
 EventApplicationClosePerson:
   name: 'Rodič / blízká osoba'
@@ -323,7 +322,7 @@ Questionnaire:
   name: 'Dotazník'
   name_plural: 'Dotazník'
   fields:
-    event_registration: 'Registrace k události'
+    event_registration: 'Registrace k akci'
     introduction: 'Úvodní text dotazníku'
     after_submit_text: 'Text po zodpovězení dotazníku'
 
@@ -366,8 +365,8 @@ QualificationCategory:
     parents: 'Nadřazené kvalifikace'
 
 AdministrationUnitCategory:
-  name: 'Typ organizující jednotky'
-  name_plural: 'Typy organizujících jednotek'
+  name: 'Typ organizační jednotky'
+  name_plural: 'Typy organizačních jednotek'
 MembershipCategory:
   name: 'Členství'
   name_plural: 'Členství'

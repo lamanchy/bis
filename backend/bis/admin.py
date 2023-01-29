@@ -21,6 +21,7 @@ from bis.admin_permissions import PermissionMixin
 from bis.models import *
 from opportunities.models import OfferedHelp
 from other.models import DuplicateUser
+from translation.translate import _
 from xlsx_export.export import export_to_xlsx
 
 admin.site.unregister(TokenProxy)
@@ -219,7 +220,7 @@ class UserAdmin(PermissionMixin, NestedModelAdminMixin, NumericFilterModelAdmin)
         ('Osobní informace', {
             'fields': ('subscribed_to_newsletter', 'health_insurance_company', 'health_issues')
         }),
-        ('Události', {
+        (_('models.Event.name_plural'), {
             'fields': ('get_events_where_was_organizer', 'get_participated_in_events')
         }),
         ['Interní data', {

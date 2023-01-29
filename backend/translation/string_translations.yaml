@@ -18,7 +18,7 @@ generic:
   birthday: 'Datum narození'
   order: 'Pořadí'
   sex: 'Pohlaví'
-  event: 'Událost'
+  event: 'Akce'
   image: 'Obrázek'
   health_issues: 'Alergie a zdravotní omezení'
   application: 'Přihláška'
@@ -27,6 +27,9 @@ generic:
   place: 'Místo'
   note: 'Poznámka'
 
+admin:
+  header: 'BIS - Brontosauří informační systém'
+  subheader: 'Administrátorský přístup pro organizační jednotky a kancleář'
 
 login:
   too_many_retries: 'Příliš mnoho pokusů, zkuste to znovu za hodinu'

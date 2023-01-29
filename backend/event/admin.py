@@ -224,7 +224,7 @@ class EventAdmin(PermissionMixin, NestedModelAdmin):
                 end = _self.cleaned_data['end']
 
                 if start == event.start or end == event.end:
-                    raise ValidationError("Nová událost musí mít odlišný čas začátku a konce od původní události")
+                    raise ValidationError("Nová akce musí mít odlišný čas začátku a konce od původní akce")
 
                 return _self.cleaned_data
 

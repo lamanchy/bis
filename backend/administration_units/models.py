@@ -9,7 +9,7 @@ from bis.helpers import permission_cache, update_roles
 from categories.models import AdministrationUnitCategory
 from common.abstract_models import BaseAddress
 from common.history import record_history
-from translation.translate import translate_model
+from translation.translate import translate_model, _
 
 
 @translate_model
@@ -122,7 +122,7 @@ class BrontosaurusMovement(SingletonModel):
         return obj
 
     def __str__(self):
-        return "Hnutí Brontosaurus"
+        return _('models.BrontosaurusMovement.name')
 
     def record_history(self, date):
         record_history(self._history, date, self.director, "Ředitel")
