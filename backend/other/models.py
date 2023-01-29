@@ -3,6 +3,7 @@ from datetime import timedelta
 from dateutil.utils import today
 from django.contrib.gis.db.models import *
 
+from bis.helpers import permission_cache
 from bis.models import User
 from categories.models import RoleCategory
 from translation.translate import translate_model
@@ -46,6 +47,7 @@ class Feedback(Model):
     user = ForeignKey(User, on_delete=CASCADE, related_name='feedbacks')
     feedback = TextField()
     created_at = DateTimeField(auto_now=True)
+    is_resolved = BooleanField(default=False)
 
     @classmethod
     def filter_queryset(cls, queryset, perm):
@@ -56,6 +58,10 @@ class Feedback(Model):
 
     class Meta:
         ordering = 'id',
+
+    @permission_cache
+    def has_edit_permission(self, user):
+        return user.is_superuser or user.is_office_worker
 
 
 @translate_model

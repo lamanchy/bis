@@ -519,6 +519,7 @@ Feedback:
   name_plural: 'Zpětné vazby'
   fields:
     feedback: 'Zpětná vazba'
+    is_resolved: 'Zpracována?'
 
 DashboardItem:
   name: 'Termín'

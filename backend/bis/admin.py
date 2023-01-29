@@ -3,6 +3,7 @@ from dateutil.utils import today
 from django.contrib.admin import action
 from django.contrib.auth.models import Group
 from django.contrib.gis.admin import OSMGeoAdmin
+from django.contrib.messages import ERROR
 from django.db import ProgrammingError
 from django.http import HttpResponse
 from more_admin_filters import MultiSelectRelatedDropdownFilter
@@ -150,12 +151,16 @@ class UserOfferedHelpAdmin(PermissionMixin, NestedStackedInline):
 
 
 @admin.action(description='Označ vybrané jako muže')
-def mark_as_man(self, request, queryset):
+def mark_as_man(model_admin, request, queryset):
+    if not all([obj.has_edit_permission(request.user) for obj in queryset]):
+        return model_admin.message_user(request, 'Nemáš právo editovat vybrané objekty', ERROR)
     queryset.update(sex=SexCategory.objects.get(slug='man'))
 
 
 @admin.action(description='Označ vybrané jako ženy')
-def mark_as_woman(self, request, queryset):
+def mark_as_woman(model_admin, request, queryset):
+    if not all([obj.has_edit_permission(request.user) for obj in queryset]):
+        return model_admin.message_user(request, 'Nemáš právo editovat vybrané objekty', ERROR)
     queryset.update(sex=SexCategory.objects.get(slug='woman'))
 
 

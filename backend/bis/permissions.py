@@ -27,7 +27,7 @@ class Permissions:
 
     def is_readonly(self):
         return self.model._meta.app_label in ['categories', 'regions'] or \
-               self.model in [Donation, Feedback]
+               self.model in [Donation]
 
     def filter_queryset(self, queryset):
         if self.can_view_all_objs():
@@ -62,7 +62,6 @@ class Permissions:
         raise RuntimeError("Should never happen")
 
     def has_add_permission(self, obj=None):
-        if self.model is Feedback: return True
         if self.model is BrontosaurusMovement: return False
         if self.is_readonly(): return False
 
@@ -77,12 +76,12 @@ class Permissions:
         if self.model is DuplicateUser and not obj: return False
 
         if self.user.is_education_member:
-            if self.model in [User, Qualification, DuplicateUser]:
+            if self.model in [User, Qualification, DuplicateUser, Feedback]:
                 return True
 
         # for any user
         if self.model in [UserAddress, UserContactAddress, UserClosePerson, EYCACard, OfferedHelp, EventApplication,
-                          EventApplicationClosePerson, EventApplicationAddress, Answer, EventDraft]:
+                          EventApplicationClosePerson, EventApplicationAddress, Answer, EventDraft, Feedback]:
             if not obj or obj.has_edit_permission(self.user):
                 return True
 
@@ -139,7 +138,7 @@ class Permissions:
         return False
 
     def has_delete_permission(self, obj=None):
-        if self.model in [BrontosaurusMovement, UploadBankRecords]: return False
+        if self.model in [BrontosaurusMovement, UploadBankRecords, Feedback]: return False
         if self.is_readonly(): return False
         if self.user.is_superuser: return True
 

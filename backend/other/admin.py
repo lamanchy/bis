@@ -1,3 +1,4 @@
+from django.contrib.messages import INFO, ERROR
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 from nested_admin.nested import NestedModelAdmin
@@ -51,13 +52,27 @@ class DuplicateUserAdmin(PermissionMixin, NestedModelAdmin):
         return super().render_change_form(request, context, obj, *args, **kwargs)
 
 
+@admin.action(description='Označit za zpracovné')
+def mark_as_resolved(model_admin, request, queryset):
+    if not all([obj.has_edit_permission(request.user) for obj in queryset]):
+        return model_admin.message_user(request, 'Nemáš právo editovat vybrané objekty', ERROR)
+    queryset.update(is_resolved=True)
+
+
 @admin.register(Feedback)
 class FeedbackAdmin(PermissionMixin, NestedModelAdmin):
-    list_display = 'user', 'feedback', 'created_at'
+    list_display = 'user', 'is_resolved', 'feedback', 'created_at'
+    list_filter = 'is_resolved',
+    actions = [mark_as_resolved]
 
     def get_exclude(self, request, obj=None):
         if obj is None:
-            return 'user',
+            return 'user', 'is_resolved', 'created_at'
+
+    def get_readonly_fields(self, request, obj=None):
+        if obj:
+            return 'feedback', 'user', 'created_at'
+        return []
 
     def get_form(self, request, obj=None, change=False, **kwargs):
         form = super(FeedbackAdmin, self).get_form(request, obj, change, **kwargs)
@@ -83,4 +98,3 @@ class DashboardItemAdmin(PermissionMixin, NestedModelAdmin):
 
     def get_queryset(self, request):
         return super().get_queryset(request).prefetch_related('for_roles')
-
