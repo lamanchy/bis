@@ -65,6 +65,11 @@ class EventPhotoAdmin(PermissionMixin, NestedTabularInline):
     classes = 'collapse',
 
 
+class EventContactAdmin(PermissionMixin, NestedTabularInline):
+    model = EventContact
+    classes = 'collapse',
+
+
 class EventFinanceReceiptAdmin(PermissionMixin, NestedStackedInline):
     model = EventFinanceReceipt
     classes = 'collapse',
@@ -102,7 +107,7 @@ class EventRegistrationAdmin(PermissionMixin, NestedStackedInline):
 
 class EventRecordAdmin(PermissionMixin, NestedStackedInline):
     model = EventRecord
-    inlines = EventPhotoAdmin,
+    inlines = EventPhotoAdmin, EventContactAdmin
 
     readonly_fields = 'get_participants_age_stats_event_start', 'get_participants_age_stats_year_start'
     autocomplete_fields = 'participants',
