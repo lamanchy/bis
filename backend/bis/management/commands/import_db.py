@@ -224,6 +224,7 @@ class Command(BaseCommand):
                     nickname=item['prezdivka'] or '',
                     phone=item['telefon'] or '',
                     birthday=birthday,
+                    subscribed_to_newsletter=item['spam'] == "1"
                 ))[0]
 
             if item['email']:
