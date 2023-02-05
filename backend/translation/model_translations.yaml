@@ -377,6 +377,7 @@ QualificationCategory:
   name_plural: 'Typy kvalifikací'
   fields:
     parents: 'Nadřazené kvalifikace'
+    can_approve: 'Schvaluje kvalifikace'
 
 AdministrationUnitCategory:
   name: 'Typ organizační jednotky'

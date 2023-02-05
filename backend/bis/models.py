@@ -531,6 +531,17 @@ class Qualification(Model):
     def __str__(self):
         return f'{self.category} (od {self.valid_since} do {self.valid_till})'
 
+    def clean(self):
+        approved_with = [category.slug for category in self.category.can_be_approved_with.all()]
+        if not Qualification.user_has_required_qualification(self.approved_by, approved_with):
+            approved_with = " nebo ".join([str(c) for c in self.category.can_be_approved_with.all()])
+            raise ValidationError(f'Kvalifikace typu {self.category} musí být schválena člověkem s kvalifikací '
+                                  f'{approved_with} nebo kvalifikací nadřazenou.')
+
+    def save(self, *args, **kwargs):
+        if not settings.SKIP_VALIDATION: self.clean()
+        super().save(*args, **kwargs)
+
     @classmethod
     def user_has_required_qualification(cls, user, required_one_of):
         qualifications = user.get_qualifications()
@@ -589,4 +600,4 @@ class Qualification(Model):
             if not cls.user_has_required_qualification(main_organizer, required_one_of):
                 categories = [str(QualificationCategory.objects.get(slug=slug)) for slug in required_one_of]
                 raise ValidationError(f'Hlavní organizátor {main_organizer} musí mít kvalifikaci '
-                                      f'{" nebo ".join(categories)} nebo kvalifikaci nadřazenou.')
+                                      f'{" nebo ".join(categories)} nebo kvalifikací nadřazenou.')

@@ -44,6 +44,7 @@ class QualificationCategory(Model):
     name = CharField(max_length=63)
     slug = SlugField(unique=True)
     parents = ManyToManyField('QualificationCategory', related_name='included_qualifications')
+    can_approve = ManyToManyField('QualificationCategory', related_name='can_be_approved_with')
 
     def get_slugs(self):
         yield self.slug

@@ -70,6 +70,16 @@ class Command(BaseCommand):
                 [QualificationCategory.objects.get(slug=parent_slug) for parent_slug in parent_slugs]
             )
 
+        qualification_can_approve = {
+            'instructor': ['main_leader_of_kids_camps', 'weekend_organizer'],
+            'consultant': ['organizer'],
+            'consultant_for_kids': ['main_leader_of_kids_camps', 'kids_leader', 'kids_intern'],
+        }
+        for slug, can_approve_slugs in qualification_can_approve.items():
+            QualificationCategory.objects.get(slug=slug).can_approve.set(
+                [QualificationCategory.objects.get(slug=can_approve_slug) for can_approve_slug in can_approve_slugs]
+            )
+
         AdministrationUnitCategory.objects.update_or_create(slug="basic_section", defaults=dict(name='Základní článek'))
         AdministrationUnitCategory.objects.update_or_create(slug="headquarter", defaults=dict(name='Ústředí'))
         AdministrationUnitCategory.objects.update_or_create(slug="regional_center",

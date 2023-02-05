@@ -109,13 +109,7 @@ class QualificationAdmin(PermissionMixin, NestedTabularInline):
     readonly_fields = 'valid_till',
     autocomplete_fields = 'approved_by',
     exclude = '_import_id',
-
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == "approved_by":
-            kwargs['initial'] = request.user
-            kwargs['disabled'] = True
-        return super().formfield_for_foreignkey(db_field, request, **kwargs)
-
+    empty_value_display = 'Doplní se automaticky'
 
 class UserEmailAdmin(PermissionMixin, SortableHiddenMixin, NestedTabularInline):
     model = UserEmail

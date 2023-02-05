@@ -102,7 +102,7 @@ class Permissions:
         return False
 
     def has_change_permission(self, obj=None):
-        if self.model in [VariableSymbol]: return False
+        if self.model in [VariableSymbol, Qualification]: return False
         if self.is_readonly(): return False
         if self.user.is_superuser: return True
 
@@ -113,7 +113,7 @@ class Permissions:
         if self.model is DuplicateUser and not obj: return False
 
         if self.user.is_education_member:
-            if self.model in [User, Qualification, DuplicateUser]:
+            if self.model in [User, DuplicateUser]:
                 return True
 
         # for any user
@@ -149,7 +149,7 @@ class Permissions:
         if self.model is DuplicateUser and not obj: return False
 
         if self.user.is_education_member:
-            if self.model in [Qualification, DuplicateUser]:
+            if self.model in [DuplicateUser]:
                 return True
 
         # for any user
