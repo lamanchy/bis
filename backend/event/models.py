@@ -271,17 +271,6 @@ class EventRecord(Model):
 
     note = TextField(blank=True)
 
-    def clean(self):
-        if self.event.is_attendance_list_required and not self.attendance_list:
-            raise ValidationError('Prezenční listina není vyplněna')
-
-        if self.event.is_volunteering() and not self.total_hours_worked:
-            raise ValidationError('Odpracováno člověkohodin nevyplněno')
-
-    def save(self, force_insert=False, force_update=False, using=None, update_fields=None):
-        if not settings.SKIP_VALIDATION: self.clean()
-        super().save(force_insert, force_update, using, update_fields)
-
     class Meta:
         ordering = '-event__start',
 
