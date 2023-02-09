@@ -138,6 +138,7 @@ class EventAdmin(PermissionMixin, NestedModelAdmin):
         AutocompleteFilterFactory('Zorganizováno pod', 'administration_units'),
         ('start', DateRangeFilter),
         ('end', DateRangeFilter),
+        ('group', MultiSelectRelatedDropdownFilter),
         ('category', MultiSelectRelatedDropdownFilter),
         ('program', MultiSelectRelatedDropdownFilter),
         'propagation__is_shown_on_web',
