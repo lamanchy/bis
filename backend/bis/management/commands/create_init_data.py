@@ -202,7 +202,7 @@ class Command(BaseCommand):
             name='Všeobecná zdravotní pojišťovna České republiky'))
         HealthInsuranceCompany.objects.update_or_create(slug='VOZP', defaults=dict(
             name='Vojenská zdravotní pojišťovna České republiky'))
-        HealthInsuranceCompany.objects.update_or_create(slug='CZPZ', defaults=dict(
+        HealthInsuranceCompany.objects.update_or_create(slug='CPZP', defaults=dict(
             name='Česká průmyslová zdravotní pojišťovna'))
         HealthInsuranceCompany.objects.update_or_create(slug='OZP', defaults=dict(
             name='Oborová zdravotní pojišťovna zaměstnanců bank, pojišťoven a stavebnictví'))
