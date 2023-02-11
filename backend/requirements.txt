@@ -27,3 +27,5 @@ django-tinymce
 XlsxWriter
 drf-spectacular
 drf-nested-routers
+vokativ
+django-bootstrap5

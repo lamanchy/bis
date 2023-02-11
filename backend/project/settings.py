@@ -85,6 +85,9 @@ INSTALLED_APPS = [
     'more_admin_filters',
     'regions',
     'drf_spectacular',
+    'game_book',
+    'game_book_categories',
+    'django_bootstrap5',
 ]
 
 MIDDLEWARE = [
@@ -266,3 +269,7 @@ THUMBNAIL_SIZES = {
     'medium': 720,
     'large': 1920,
 }
+
+BOOTSTRAP5 = {'required_css_class': 'required'}
+
+

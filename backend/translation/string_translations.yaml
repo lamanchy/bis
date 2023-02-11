@@ -26,6 +26,9 @@ generic:
   date: 'Datum'
   place: 'Místo'
   note: 'Poznámka'
+  game: 'Program'
+  file: 'Soubor'
+  comment: 'Komentář'
 
 admin:
   header: 'BIS - Brontosauří informační systém'

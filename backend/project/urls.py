@@ -21,6 +21,7 @@ urlpatterns = [
     path('tinymce/', include('tinymce.urls')),
 
     path(f'{settings.API_BASE}', include('api.urls')),
+    path(f'game_book/', include('game_book.urls')),
 ]
 
 if settings.DEBUG:

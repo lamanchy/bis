@@ -1,530 +1,655 @@
 BaseAddress:
-  name: 'Adresa'
-  name_plural: 'Adresy'
+  name: Adresa
+  name_plural: Adresy
 BaseContact:
-  name: 'Kontakt'
-  name_plural: 'Kontakty'
+  name: Kontakt
+  name_plural: Kontakty
 
 Location:
-  name: 'Lokalita'
-  name_plural: 'Lokality'
+  name: Lokalita
+  name_plural: Lokality
   fields:
-    name: 'Název lokality'
-    patron: 'Kontakt v hnutí'
-    contact_person: 'Kontakt na lokalitě'
-    for_beginners: 'Vhodné pro začínající organizátory?'
-    is_full: 'Je lokalita plně vytížená?'
-    is_unexplored: 'Je lokalita nová/nevyužívaná?'
-    program: 'Program lokality'
-    accessibility_from_prague: 'Dostupnost z Prahy'
-    accessibility_from_brno: 'Dostupnost z Brna'
-    volunteering_work: 'Práce na lokalitě'
-    volunteering_work_done: 'Čeho jsme na lokalitě dosáhli'
-    volunteering_work_goals: 'Čeho chceme dosáhnout / péče o lokalitu'
-    options_around: 'Možnosti programu a vzdělávání'
-    facilities: 'Zázemí'
-    address: 'Adresa'
-    web: 'Web'
-    gps_location: 'GPS lokace'
-    is_fully_specified: 'Plnohodnotná lokalita?'
+    name: Název lokality
+    patron: Kontakt v hnutí
+    contact_person: Kontakt na lokalitě
+    for_beginners: Vhodné pro začínající organizátory?
+    is_full: Je lokalita plně vytížená?
+    is_unexplored: Je lokalita nová/nevyužívaná?
+    program: Program lokality
+    accessibility_from_prague: Dostupnost z Prahy
+    accessibility_from_brno: Dostupnost z Brna
+    volunteering_work: Práce na lokalitě
+    volunteering_work_done: Čeho jsme na lokalitě dosáhli
+    volunteering_work_goals: Čeho chceme dosáhnout / péče o lokalitu
+    options_around: Možnosti programu a vzdělávání
+    facilities: Zázemí
+    address: Adresa
+    web: Web
+    gps_location: GPS lokace
+    is_fully_specified: Plnohodnotná lokalita?
 
 LocationPhoto:
-  name: 'Fotka lokality'
-  name_plural: 'Fotky lokalit'
+  name: Fotka lokality
+  name_plural: Fotky lokalit
 LocationContactPerson:
-  name: 'Kontakt na lokalitě'
-  name_plural: 'Kontakt na lokalitě'
+  name: Kontakt na lokalitě
+  name_plural: Kontakt na lokalitě
   fields:
 
 LocationPatron:
-  name: 'Kontakt v hnutí'
-  name_plural: 'Kontakt v hnutí'
+  name: Kontakt v hnutí
   fields:
 
 User:
-  name: 'Uživatel'
-  name_plural: 'Uživatelé'
+  name: Uživatel
+  name_plural: Uživatelé
   fields:
-    email_exists: 'Je e-mail skutečný?'
-    is_active: 'Může se uživatel přihlásit?'
-    date_joined: 'Datum vzniku účtu'
-    close_person: 'Rodič / blízká osoba'
-    health_insurance_company: 'Pojišťovna'
-    roles: 'Role'
-    internal_note: 'Poznámka kanclu'
-    subscribed_to_newsletter: 'Odebírá novinky?'
+    email_exists: Je e-mail skutečný?
+    is_active: Může se uživatel přihlásit?
+    date_joined: Datum vzniku účtu
+    close_person: Rodič / blízká osoba
+    health_insurance_company: Pojišťovna
+    roles: Role
+    internal_note: Poznámka kanclu
+    subscribed_to_newsletter: Odebírá novinky?
 
 
 UserClosePerson:
-  name: 'Rodič / blízká osoba'
-  name_plural: 'Rodič / blízká osoba'
+  name: Rodič / blízká osoba
 UserAddress:
-  name: 'Adresa uživatele'
-  name_plural: 'Adresa uživatele'
+  name: Adresa uživatele
 EYCACard:
-  name: 'EYCA karta'
-  name_plural: 'EYCA karty'
+  name: EYCA karta
+  name_plural: EYCA karty
   fields:
-    photo: 'Fotka'
-    number: 'Číslo kartičky'
-    submitted_for_creation: 'Předáno k výrobě'
-    sent_to_user: 'Odesláno uživateli'
-    valid_till: 'Platnost do'
+    photo: Fotka
+    number: Číslo kartičky
+    submitted_for_creation: Předáno k výrobě
+    sent_to_user: Odesláno uživateli
+    valid_till: Platnost do
 
 UserContactAddress:
-  name: 'Kontaktní adresa uživatele'
-  name_plural: 'Kontaktní adresa uživatele'
+  name: Kontaktní adresa uživatele
 UserEmail:
-  name: 'E-mail uživatele'
-  name_plural: 'E-maily uživatele'
+  name: E-mail uživatele
+  name_plural: E-maily uživatele
 DuplicateUser:
-  name: 'Duplicita'
-  name_plural: 'Duplicity'
+  name: Duplicita
+  name_plural: Duplicity
   fields:
-    user: 'Primární uživatel'
-    other: 'Duplicitní uživatel'
+    user: Primární uživatel
+    other: Duplicitní uživatel
 
 
 AdministrationUnit:
-  name: 'Organizační jednotka'
-  name_plural: 'Organizační jednotky'
+  name: Organizační jednotka
+  name_plural: Organizační jednotky
   fields:
     name:
-      - "Oficiální název"
-      - "Název z rejstříku, např. ZČ HB Zvonek"
+      - Oficiální název
+      - Název z rejstříku, např. ZČ HB Zvonek
     abbreviation:
-      - 'Zkrácený název'
-      - "Běžně užívaný název, např. Zvonek, Orchis..."
-    phone: 'Telefon'
-    category: 'Typ jednotky'
-    board_members: 'Členové představenstva'
-    bank_account_number: 'Číslo účtu'
-    chairman: 'Předseda'
-    vice_chairman: 'Místopředseda'
-    existed_since: 'Datum vzniku'
-    existed_till: 'Datum zániku'
-    ic: 'IČO'
-    is_for_kids: 'Jedná se o BRĎO oddíl?'
-    manager: 'Hospodář'
-    www: 'Webové stránky'
-    custom_statues: 'Vlastní stanovy'
-    data_box: 'Datová schránka'
-    facebook: 'Facebook'
-    instagram: 'Instagram'
-    gps_location: 'GPS lokace'
+      - Zkrácený název
+      - Běžně užívaný název, např. Zvonek, Orchis...
+    phone: Telefon
+    category: Typ jednotky
+    board_members: Členové představenstva
+    bank_account_number: Číslo účtu
+    chairman: Předseda
+    vice_chairman: Místopředseda
+    existed_since: Datum vzniku
+    existed_till: Datum zániku
+    ic: IČO
+    is_for_kids: Jedná se o BRĎO oddíl?
+    manager: Hospodář
+    www: Webové stránky
+    custom_statues: Vlastní stanovy
+    data_box: Datová schránka
+    facebook: Facebook
+    instagram: Instagram
+    gps_location: GPS lokace
 
 AdministrationUnitAddress:
-  name: 'Adresa'
-  name_plural: 'Adresa'
+  name: Adresa
   fields:
-    administration_unit: 'Organizační jednotka'
+    administration_unit: Organizační jednotka
 AdministrationUnitContactAddress:
-  name: 'Kontaktní adresa'
-  name_plural: 'Kontaktní adresa'
+  name: Kontaktní adresa
   fields:
-    administration_unit: 'Organizační jednotka'
+    administration_unit: Organizační jednotka
 GeneralMeeting:
-  name: 'Valná hromada'
-  name_plural: 'Valné hromady'
+  name: Valná hromada
+  name_plural: Valné hromady
   fields:
-    administration_unit: 'Organizační jednotka'
+    administration_unit: Organizační jednotka
 
 
 BrontosaurusMovement:
-  name: 'Přístupy'
-  name_plural: 'Přístupy'
+  name: Přístupy
   fields:
     director:
-      - 'Programový ředitel'
-      - 'Má veškerá oprávnění'
+      - Programový ředitel
+      - Má veškerá oprávnění
     finance_director:
-      - 'Finanční ředitel'
-      - 'Má veškerá oprávnění'
+      - Finanční ředitel
+      - Má veškerá oprávnění
     bis_administrators:
-      - 'Správci BISu'
-      - 'Mají veškeré oprávnění'
+      - Správci BISu
+      - Mají veškeré oprávnění
     office_workers:
-      - 'Pracovníci kanceláře'
-      - 'Mohou měnit vše kromě základních oprávnění'
+      - Pracovníci kanceláře
+      - Mohou měnit vše kromě základních oprávnění
     audit_committee:
-      - 'KRK - Kontrolní a revizní komise'
-      - 'Vidí vše, nemohou editovat'
+      - KRK - Kontrolní a revizní komise
+      - Vidí vše, nemohou editovat
     executive_committee:
-      - 'VV - Výkonný výbor'
-      - 'Vidí vše, nemohou editovat'
+      - VV - Výkonný výbor
+      - Vidí vše, nemohou editovat
     education_members:
-      - 'EDU - konzultanti a instruktoři'
-      - 'Vidí pouze uživatele a mohou editovat pouze jejich kvalifikaci'
+      - EDU - konzultanti a instruktoři
+      - Vidí pouze uživatele a mohou editovat pouze jejich kvalifikaci
 
 
 Membership:
-  name: 'Členství'
-  name_plural: 'Členství'
+  name: Členství
   fields:
-    administration_unit: 'Organizační jednotka'
-    year: 'Členství v roce'
-    category: 'Typ'
+    administration_unit: Organizační jednotka
+    year: Členství v roce
+    category: Typ
 
 Qualification:
-  name: 'Kvalifikace'
-  name_plural: 'Kvalifikace'
+  name: Kvalifikace
   fields:
-    category: 'Typ kvalifikace'
-    valid_till: 'Platnost do'
-    valid_since: 'Platnost od'
-    approved_by: 'Schválilo'
+    category: Typ kvalifikace
+    valid_till: Platnost do
+    valid_since: Platnost od
+    approved_by: Schválilo
 
 Event:
-  name: 'Akce'
-  name_plural: 'Akce'
+  name: Akce
+  name_plural: Akce
   fields:
-    group: 'Druh'
-    category: 'Typ'
-    internal_note: 'Privátní poznámka'
-    program: 'Program'
-    intended_for: 'Pro koho?'
+    group: Druh
+    category: Typ
+    internal_note: Privátní poznámka
+    program: Program
+    intended_for: Pro koho?
     location:
-      - 'Lokalita'
-      - 'Zobrazí se na webu jako místo konání akce'
-    is_canceled: 'Zrušena?'
-    is_complete: 'Vše vyplněno?'
-    is_closed: 'Uzavřena?'
-    start: 'Začátek akce'
-    start_time: 'Čas začátku akce'
-    end: 'Konec akce'
-    duration: 'Délka trvání akce'
+      - Lokalita
+      - Zobrazí se na webu jako místo konání akce
+    is_canceled: Zrušena?
+    is_complete: Vše vyplněno?
+    is_closed: Uzavřena?
+    start: Začátek akce
+    start_time: Čas začátku akce
+    end: Konec akce
+    duration: Délka trvání akce
     online_link:
-      - 'Webová adresa pro připojení'
-      - 'Vyplňte, pokud se akce koná online'
-    number_of_sub_events: 'Počet akcí v uvedeném období'
-    administration_units: 'Organizační jednotky'
-    main_organizer: 'Hlavní organizátor'
-    other_organizers: 'Všichni organizátoři'
-    is_attendance_list_required: 'Je prezenční listina vyžadována?'
+      - Webová adresa pro připojení
+      - Vyplňte, pokud se akce koná online
+    number_of_sub_events: Počet akcí v uvedeném období
+    administration_units: Organizační jednotky
+    main_organizer: Hlavní organizátor
+    other_organizers: Všichni organizátoři
+    is_attendance_list_required: Je prezenční listina vyžadována?
 
 EventFinance:
-  name: 'Finance akce'
-  name_plural: 'Finance akce'
+  name: Finance akce
   fields:
-    category: 'Kategorie dle financí'
-    grant_category: 'Typ grantu'
-    grant_amount: 'Přidělené dotace'
-    total_event_cost: 'Celkové náklady akce'
-    budget: 'Rozpočet'
+    category: Kategorie dle financí
+    grant_category: Typ grantu
+    grant_amount: Přidělené dotace
+    total_event_cost: Celkové náklady akce
+    budget: Rozpočet
     bank_account_number:
-      - 'Číslo bankvního účtu'
-      - 'Pro zaslání dotací'
+      - Číslo bankvního účtu
+      - Pro zaslání dotací
 EventFinanceReceipt:
-  name: 'Účtenka'
-  name_plural: 'Účtenky'
+  name: Účtenka
+  name_plural: Účtenky
   fields:
-    finance: 'Finance akce'
-    receipt: 'Účtenky'
+    finance: Finance akce
+    receipt: Účtenky
 
 EventPropagation:
-  name: 'Propagace akce'
-  name_plural: 'Propagace akce'
+  name: Propagace akce
   fields:
-    is_shown_on_web: 'Je akce zobrazena na webu?'
-    vip_propagation: 'Je akce propagována v rámci VIP propagace?'
-    minimum_age: 'Minimální věk'
-    maximum_age: 'Maximální věk'
+    is_shown_on_web: Je akce zobrazena na webu?
+    vip_propagation: Je akce propagována v rámci VIP propagace?
+    minimum_age: Minimální věk
+    maximum_age: Maximální věk
     cost:
-      - 'Účastnický poplatek'
-      - 'Max. 12 znaků, "Kč" je doplněno automaticky, nechte prázdné pokud je akce bez poplatku'
-    diets: 'Možnosti stravování'
-    _contact_url: 'Kontaktní url'
-    accommodation: 'Ubytování'
+      - Účastnický poplatek
+      - Max. 12 znaků, "Kč" je doplněno automaticky, nechte prázdné pokud je akce bez poplatku
+    diets: Možnosti stravování
+    _contact_url: Kontaktní url
+    accommodation: Ubytování
     working_days:
-      - 'Počet pracovních dní'
-      - 'Pouze pro vícedenní dobrovolnické akce'
+      - Počet pracovních dní
+      - Pouze pro vícedenní dobrovolnické akce
     working_hours:
-      - 'Odpracovaných hodin (denně)'
-      - 'Pouze pro dobrovolnické akce'
-    organizers: 'Organizátoři (text do propagace)'
-    web_url: 'Web akce'
+      - Odpracovaných hodin (denně)
+      - Pouze pro dobrovolnické akce
+    organizers: Organizátoři (text do propagace)
+    web_url: Web akce
     invitation_text_introduction: 'Zvací text: Co nás čeká?'
     invitation_text_practical_information: 'Zvací text: Co, kde a jak'
     invitation_text_work_description: 'Zvací text: Dobrovolnická pomoc'
     invitation_text_about_us: 'Zvací text: Malá ochutnávka'
-    contact_person: 'Kontaktní osoba'
+    contact_person: Kontaktní osoba
     contact_name:
-      - 'Jméno kontaktní osoby'
-      - 'Nechte prázdné pokud chcete použít jméno kontaktní osoby'
+      - Jméno kontaktní osoby
+      - Nechte prázdné pokud chcete použít jméno kontaktní osoby
     contact_phone:
-      - 'Kontaktní telefon'
-      - 'Nechte prázdné pokud chcete použít telefon kontaktní osoby'
+      - Kontaktní telefon
+      - Nechte prázdné pokud chcete použít telefon kontaktní osoby
     contact_email:
-      - 'Kontaktní e-mail'
-      - 'Nechte prázdné pokud chcete použít e-mail kontaktní osoby'
+      - Kontaktní e-mail
+      - Nechte prázdné pokud chcete použít e-mail kontaktní osoby
 
 VIPEventPropagation:
-  name: 'VIP propagace akce'
-  name_plural: 'VIP propagace akce'
+  name: VIP propagace akce
   fields:
-    event_propagation: 'Propagace'
+    event_propagation: Propagace
     goals_of_event:
-      - 'Cíle akce a přínos pro prvoúčastníky'
-      - 'Jaké je hlavní téma vaší akce? Jaké jsou hlavní cíle akce? Co nejvýstižněji popište, co akce přináší účastníkům, co zajímavého si zkusí, co se dozví, naučí, v čem se rozvinou...'
+      - Cíle akce a přínos pro prvoúčastníky
+      - Jaké je hlavní téma vaší akce? Jaké jsou hlavní cíle akce? Co nejvýstižněji popište, co akce přináší účastníkům, co zajímavého si zkusí, co se dozví, naučí, v čem se rozvinou...
     program:
-      - 'Programové pojetí akce pro prvoúčastníky'
-      - 'V základu uveďte, jak bude vaše akce programově a dramaturgicky koncipována (motivační příběh, zaměření programu – hry, diskuse, řemesla,...). Uveďte, jak náplň a program akce reflektují potřeby vaší cílové skupiny prvoúčastníků.'
+      - Programové pojetí akce pro prvoúčastníky
+      - V základu uveďte, jak bude vaše akce programově a dramaturgicky koncipována (motivační příběh, zaměření programu – hry, diskuse, řemesla,...). Uveďte, jak náplň a program akce reflektují potřeby vaší cílové skupiny prvoúčastníků.
     rover_propagation:
-      - 'Propagovat akci v Roverském kmeni?'
-      - 'Placená propagace vaší vícedenní akce v časopisu Roverský kmen za poplatek 100 Kč.'
+      - Propagovat akci v Roverském kmeni?
+      - Placená propagace vaší vícedenní akce v časopisu Roverský kmen za poplatek 100 Kč.
     short_invitation_text:
-      - 'Krátký zvací text do propagace'
-      - 'Ve 2-4 větách nalákejte na vaši akci a zdůrazněte osobní přínos pro účastníky (max. 200 znaků).'
+      - Krátký zvací text do propagace
+      - Ve 2-4 větách nalákejte na vaši akci a zdůrazněte osobní přínos pro účastníky (max. 200 znaků).
 
 EventRegistration:
-  name: 'Registrace'
-  name_plural: 'Registrace'
+  name: Registrace
   fields:
-    is_registration_required: 'Je požadována registrace?'
-    is_event_full: 'Je akce plná?'
-    questionnaire: 'Dotazník'
-    alternative_registration_link: 'Alternativní adresa pro přihlášení'
+    is_registration_required: Je požadována registrace?
+    is_event_full: Je akce plná?
+    questionnaire: Dotazník
+    alternative_registration_link: Alternativní adresa pro přihlášení
 
 EventRecord:
-  name: 'Záznam z akce'
-  name_plural: 'Záznam z akce'
+  name: Záznam z akce
   fields:
-    total_hours_worked: 'Odpracováno člověkohodin'
-    comment_on_work_done: 'Okomentování vykonané práce'
-    attendance_list: 'Prezenční listina'
-    participants: 'Účastníci'
-    note: 'Poznámka k akci'
+    total_hours_worked: Odpracováno člověkohodin
+    comment_on_work_done: Okomentování vykonané práce
+    attendance_list: Prezenční listina
+    participants: Účastníci
+    note: Poznámka k akci
     number_of_participants:
-      - 'Počet účastníků'
-      - 'Vyplň pouze pokud nejsou vyplnění konkrétní účastníci'
+      - Počet účastníků
+      - Vyplň pouze pokud nejsou vyplnění konkrétní účastníci
     number_of_participants_under_26:
-      - 'Počet účastníků pod 26 let'
-      - 'Vyplň pouze pokud nejsou vyplnění konkrétní účastníci'
+      - Počet účastníků pod 26 let
+      - Vyplň pouze pokud nejsou vyplnění konkrétní účastníci
 EventContact:
-  name: 'Kontakt z akce'
-  name_plural: 'Kontakty z akce'
+  name: Kontakt z akce
+  name_plural: Kontakty z akce
   fields:
-    record: 'Záznam z akce'
+    record: Záznam z akce
 
 EventPropagationImage:
-  name: 'Obrázek k propagaci'
-  name_plural: 'Obrázky k propagaci'
+  name: Obrázek k propagaci
+  name_plural: Obrázky k propagaci
   fields:
-    propagation: 'Propagace akce'
+    propagation: Propagace akce
 
 EventPhoto:
-  name: 'Fotka z akce'
-  name_plural: 'Fotky z akce'
+  name: Fotka z akce
+  name_plural: Fotky z akce
   fields:
-    record: 'Záznam z akce'
+    record: Záznam z akce
 
 # questionnaire
 EventApplication:
-  name: 'Přihláška na akci'
-  name_plural: 'Přihlášky na akci'
+  name: Přihláška na akci
+  name_plural: Přihlášky na akci
   fields:
-    event_registration: 'Registrace k akci'
-    state: 'Stav'
+    event_registration: Registrace k akci
+    state: Stav
 EventApplicationClosePerson:
-  name: 'Rodič / blízká osoba'
-  name_plural: 'Rodič / blízká osoba'
+  name: Rodič / blízká osoba
+  name_plural: Rodič / blízká osoba
 EventApplicationAddress:
-  name: 'Adresa'
-  name_plural: 'Adresa'
+  name: Adresa
+  name_plural: Adresa
 
 Questionnaire:
-  name: 'Dotazník'
-  name_plural: 'Dotazník'
+  name: Dotazník
   fields:
-    event_registration: 'Registrace k akci'
-    introduction: 'Úvodní text dotazníku'
-    after_submit_text: 'Text po zodpovězení dotazníku'
+    event_registration: Registrace k akci
+    introduction: Úvodní text dotazníku
+    after_submit_text: Text po zodpovězení dotazníku
 
 Question:
-  name: 'Otázka dotazníku'
-  name_plural: 'Otázky dotazníku'
+  name: Otázka dotazníku
+  name_plural: Otázky dotazníku
   fields:
-    question: 'Otázka'
-    data: 'Data'
-    is_required: 'Nutno vyplnit?'
-    questionnaire: 'Dotazník'
+    question: Otázka
+    data: Data
+    is_required: Nutno vyplnit?
+    questionnaire: Dotazník
 
 Answer:
-  name: 'Odpověď na otázku'
-  name_plural: 'Odpovědi na otázky'
+  name: Odpověď na otázku
+  name_plural: Odpovědi na otázky
   fields:
-    question: 'Otázka'
-    application: 'Přihláška na akci'
-    answer: 'Odpověď'
-    data: 'Data'
+    question: Otázka
+    application: Přihláška na akci
+    answer: Odpověď
+    data: Data
 
 
 # categories
 GrantCategory:
-  name: 'Typ grantu'
-  name_plural: 'Typy grantů'
+  name: Typ grantu
+  name_plural: Typy grantů
 
 EventIntendedForCategory:
-  name: 'Kategorie zaměření propagace'
-  name_plural: 'Kategorie zaměření propagace'
+  name: Kategorie zaměření propagace
+  name_plural: Kategorie zaměření propagace
 
 DietCategory:
-  name: 'Typ stravy'
-  name_plural: 'Typy stravy'
+  name: Typ stravy
+  name_plural: Typy stravy
 
 QualificationCategory:
-  name: 'Typ kvalifikace'
-  name_plural: 'Typy kvalifikací'
+  name: Typ kvalifikace
+  name_plural: Typy kvalifikací
   fields:
-    parents: 'Nadřazené kvalifikace'
-    can_approve: 'Schvaluje kvalifikace'
+    parents: Nadřazené kvalifikace
+    can_approve: Schvaluje kvalifikace
 
 AdministrationUnitCategory:
-  name: 'Typ organizační jednotky'
-  name_plural: 'Typy organizačních jednotek'
+  name: Typ organizační jednotky
+  name_plural: Typy organizačních jednotek
 MembershipCategory:
-  name: 'Členství'
-  name_plural: 'Členství'
+  name: Členství
+  name_plural: Členství
 EventGroupCategory:
-  name: 'Druh akce'
-  name_plural: 'Druhy akcí'
+  name: Druh akce
+  name_plural: Druhy akcí
 EventCategory:
-  name: 'Typ akce'
-  name_plural: 'Typy akcí'
+  name: Typ akce
+  name_plural: Typy akcí
 EventProgramCategory:
-  name: 'Program akce'
-  name_plural: 'Programy akcí'
+  name: Program akce
+  name_plural: Programy akcí
 DonationSourceCategory:
-  name: 'Zdroj dotace'
-  name_plural: 'Zdroje dotací'
+  name: Zdroj dotace
+  name_plural: Zdroje dotací
 OrganizerRoleCategory:
-  name: 'Organizátorská role'
-  name_plural: 'Organizátorské role'
+  name: Organizátorská role
+  name_plural: Organizátorské role
 TeamRoleCategory:
-  name: 'Týmová role'
-  name_plural: 'Týmové role'
+  name: Týmová role
+  name_plural: Týmové role
 OpportunityCategory:
-  name: 'Kagegorie příležitosti'
-  name_plural: 'Kagegorie příležitostí'
+  name: Kagegorie příležitosti
+  name_plural: Kagegorie příležitostí
 LocationProgramCategory:
-  name: 'Program lokality'
-  name_plural: 'Programy lokalit'
+  name: Program lokality
+  name_plural: Programy lokalit
 LocationAccessibilityCategory:
-  name: 'Dostupnost lokality'
-  name_plural: 'Dostupnosti lokalit'
+  name: Dostupnost lokality
+  name_plural: Dostupnosti lokalit
 RoleCategory:
-  name: 'Typ role'
-  name_plural: 'Typy rolí'
+  name: Typ role
+  name_plural: Typy rolí
 HealthInsuranceCompany:
-  name: 'Zdravotní pojišťovna'
-  name_plural: 'Zdravotní pojišťovny'
+  name: Zdravotní pojišťovna
+  name_plural: Zdravotní pojišťovny
 SexCategory:
-  name: 'Pohlaví'
-  name_plural: 'Pohlaví'
+  name: Pohlaví
+  name_plural: Pohlaví
 
 Donor:
-  name: 'Dárce'
-  name_plural: 'Dárci'
+  name: Dárce
+  name_plural: Dárci
   fields:
-    subscribed_to_newsletter: 'Odebírá novinky?'
+    subscribed_to_newsletter: Odebírá novinky?
     is_public:
-      - 'Chce zveřejnit?'
-      - 'na webu a v závěrečné zprávě'
-    date_joined: 'Dárcem od'
-    regional_center_support: 'podpora RC'
-    basic_section_support: 'podpora ZČ'
-    has_recurrent_donation: 'Pravidelný dárce'
-    internal_note: 'Interní poznámka'
+      - Chce zveřejnit?
+      - na webu a v závěrečné zprávě
+    date_joined: Dárcem od
+    regional_center_support: podpora RC
+    basic_section_support: podpora ZČ
+    has_recurrent_donation: Pravidelný dárce
+    internal_note: Interní poznámka
 
 Donation:
-  name: 'Dar'
-  name_plural: 'Dary'
+  name: Dar
+  name_plural: Dary
   fields:
-    donor: 'Dárce'
-    donated_at: 'Datum'
-    amount: 'Částka'
-    donation_source: 'Zdroj dotace'
-    info: 'Info'
+    donor: Dárce
+    donated_at: Datum
+    amount: Částka
+    donation_source: Zdroj dotace
+    info: Info
     _variable_symbol:
-      - 'Variabilní symbol platby'
-      - 'pro párování na dárce'
+      - Variabilní symbol platby
+      - pro párování na dárce
 VariableSymbol:
-  name: 'Variabilní symbol'
-  name_plural: 'Variabilní symboly'
+  name: Variabilní symbol
+  name_plural: Variabilní symboly
   fields:
-    donor: 'Dárce'
-    variable_symbol: 'Variabilní symbol'
+    donor: Dárce
+    variable_symbol: Variabilní symbol
 UploadBankRecords:
-  name: 'Nahrání bankovních záznamů'
-  name_plural: 'Nahrání bankovních záznamů'
+  name: Nahrání bankovních záznamů
+  name_plural: Nahrání bankovních záznamů
   fields:
-    file: 'Soubor .csv'
+    file: Soubor .csv
 Region:
-  name: 'Kraj'
-  name_plural: 'Kraje'
+  name: Kraj
+  name_plural: Kraje
   fields:
-    area: 'Oblast'
+    area: Oblast
 ZipCode:
-  name: 'PSČ'
-  name_plural: 'PSČ'
+  name: PSČ
+  name_plural: PSČ
 
 Opportunity:
-  name: 'Příležitost'
-  name_plural: 'Příležitosti'
+  name: Příležitost
+  name_plural: Příležitosti
   fields:
-    category: 'Kategorie'
-    start: 'Začátek příležitosti'
-    end: 'Konec příležitosti'
-    on_web_start: 'Zobrazit na webu od'
-    on_web_end: 'Zobrazit na webu do'
-    location: 'Místo příležitosti'
+    category: Kategorie
+    start: Začátek příležitosti
+    end: Konec příležitosti
+    on_web_start: Zobrazit na webu od
+    on_web_end: Zobrazit na webu do
+    location: Místo příležitosti
     introduction:
-      - 'Představení příležitosti'
-      - 'Krátce vysvětli význam činnosti a její přínos, aby přilákala zájemce'
+      - Představení příležitosti
+      - Krátce vysvětli význam činnosti a její přínos, aby přilákala zájemce
     description:
-      - 'Popis činnosti'
-      - 'Přibliž konkrétní činnosti a aktivity, které budou součástí příležitosti'
+      - Popis činnosti
+      - Přibliž konkrétní činnosti a aktivity, které budou součástí příležitosti
     location_benefits:
-      - 'Přínos pro lokalitu'
-      - 'Popiš dopad a přínos činnosti pro dané místě (nezobrazí se u typu spolupráce)'
+      - Přínos pro lokalitu
+      - Popiš dopad a přínos činnosti pro dané místě (nezobrazí se u typu spolupráce)
     personal_benefits:
-      - 'Přínos ze spolupráce'
-      - 'Uveď konkrétní osobní přínos do života z realizace této příležitosti'
+      - Přínos ze spolupráce
+      - Uveď konkrétní osobní přínos do života z realizace této příležitosti
     requirements:
-      - 'Požadavky příležitosti'
-      - 'Napiš dovednosti, zkušenosti či vybavení potřebné k zapojení do příležitosti'
-    contact_person: 'Kontaktní osoba'
+      - Požadavky příležitosti
+      - Napiš dovednosti, zkušenosti či vybavení potřebné k zapojení do příležitosti
+    contact_person: Kontaktní osoba
     contact_name:
-      - 'Jméno kontaktní osoby'
-      - 'Nechte prázdné pokud chcete použít jméno kontaktní osoby'
+      - Jméno kontaktní osoby
+      - Nechte prázdné pokud chcete použít jméno kontaktní osoby
     contact_phone:
-      - 'Kontaktní telefon'
-      - 'Nechte prázdné pokud chcete použít telefon kontaktní osoby'
+      - Kontaktní telefon
+      - Nechte prázdné pokud chcete použít telefon kontaktní osoby
     contact_email:
-      - 'Kontaktní e-mail'
-      - 'Nechte prázdné pokud chcete použít e-mail kontaktní osoby'
+      - Kontaktní e-mail
+      - Nechte prázdné pokud chcete použít e-mail kontaktní osoby
 
 OfferedHelp:
-  name: 'Nabízená pomoc'
-  name_plural: 'Nabízená pomoc'
+  name: Nabízená pomoc
+  name_plural: Nabízená pomoc
   fields:
-    programs: 'Programy'
-    organizer_roles: 'Organizátorské role'
-    additional_organizer_role: 'Jiná organizátorské role'
-    team_roles: 'Týmové role'
-    additional_team_role: 'Jiné týmové role'
-    info: 'Popis pomoci'
+    programs: Programy
+    organizer_roles: Organizátorské role
+    additional_organizer_role: Jiná organizátorské role
+    team_roles: Týmové role
+    additional_team_role: Jiné týmové role
+    info: Popis pomoci
 
 Feedback:
-  name: 'Zpětná vazba'
-  name_plural: 'Zpětné vazby'
+  name: Zpětná vazba
+  name_plural: Zpětné vazby
   fields:
-    feedback: 'Zpětná vazba'
-    is_resolved: 'Zpracována?'
+    feedback: Zpětná vazba
+    is_resolved: Zpracována?
 
 DashboardItem:
-  name: 'Termín'
-  name_plural: 'Termíny'
+  name: Termín
+  name_plural: Termíny
   fields:
-    for_roles: 'Pro role'
-    repeats_every_year: 'Opakuje se každý rok?'
+    for_roles: Pro role
+    repeats_every_year: Opakuje se každý rok?
+
+
+# --------------------------------------------------------------------------------
+Game:
+  name: Program
+  name_plural: Programy
+  fields:
+    is_hidden:
+      - Je program skrytý?
+      - Editor může program skrýt (autorské práva, nekorektní text, atd.)
+    created_at: Vytvořen
+    contributor:
+      - Přispěvatel
+      - Kdo zadal program do sborníku?
+    is_original:
+      - Autorský program?
+      - Jsi autorem tohoto programu — vytvořil si ho? Pokud ne, vyplň původ programu níže.
+    origin:
+      - Původ programu
+      - Kdo je autorem programu, odkud byl program převzat?
+    administration_unit:
+      - Zákldní článek (RC/klub)
+      - Chceš program přiřadit pod určitý článek? Dej mu kredit!
+    thumbs_up: Dali palec nahoru
+    favourites: Oblílibi si
+    watchers: Sledují
+    stars:
+      - Počet hvězd
+      - Interní hodnocení pro editory
+    is_verified:
+      - Je program ověřen?
+      - Editor může program ověřit, záruka brontosauří kvality
+    tags: Tagy
+    physical_category: Fyzická náročnost
+    physical_note:
+      - Poznámky
+      - Specifické poznámky k fyzické náročnosti
+    mental_category: Psychická náročnost
+    mental_note:
+      - Poznámky
+      - Specifické poznámky k psychické náročnosti
+    location_category:
+      - Místa uvedení
+      - Typová místa, na kterých lze / dává smysl program uvést
+    location_note:
+      - Poznámky
+      - Specifické poznámky k místu uvedení
+    participant_number_category: Vhodný počet účastníků
+    participant_number_note:
+      - Poznámky
+      - Specifické poznámky k počtu účastníků
+    participant_age_category: Vhodný věk účastníků
+    participant_age_note:
+      - Poznámky
+      - Specifické poznámky k věku účastníků
+    game_length_category: Délka programu
+    game_length_note:
+      - Poznámky
+      - Specifické poznámky k délce programu
+    preparation_length_category: Délka přípravy
+    preparation_length_note:
+      - Poznámky
+      - Specifické poznámky k délce / náročnosti přípravy programu
+    material_requirement_category: Množství materiálu
+    material_requirement_note:
+      - Poznámky
+      - Specifické poznámky k množství materiálu
+    organizers_number_category: Počet orgů pro uvedení
+    organizers_number_note:
+      - Poznámky
+      - Specifické poznámky k počtu orgů pro uvedení programu
+    short_description:
+      - Krátké představení
+      - Maximálně 250 znaků
+    goal: Cíle programu
+    description:
+      - Pravidla
+      - Popis a pravidla programu
+    motivation:
+      - Motivace
+      - Tipy na vtáhnutí účastníků do hry (scénkou, hudbou, aktivitkou)
+    notes:
+      - Metodické poznámky
+      - Tipy a triky pro uvedení, otázky na reflexi, atd.
+
+BaseFile:
+  name: Soubor
+  name_plural: Soubory
+  fields:
+    file: Soubor
+GameFile:
+  name: Soubor
+  name_plural: Soubory
+Comment:
+  name: Komentář
+  name_plural: Komentáře
+  fields:
+    author: Autor
+    is_hidden: Je skrytý?
+CommentFile:
+  name: Soubor
+  name_plural: Soubory
+PlayedAt:
+  name: Uvedení programu
+PlayedAtFile:
+  name: Soubor
+  name_plural: Soubory
+  fields:
+    played_at: Uvedení programu
+GameList:
+  name: Seznam programů
+  name_plural: Seznamy programů
+  fields:
+    games: Programy
+    owner: Autor seznamu
+
+Tag:
+  name: Tag
+  name_plural: Tagy
+BaseCategory:
+  name: Kategorie
+PhysicalCategory:
+  name: Kategorie fyzické náročnosti
+MentalCategory:
+  name: Kategorie psychické náročnosti
+LocationCategory:
+  name: Kategorie místa uvedení
+ParticipantNumberCategory:
+  name: Kategorie početu účastníků
+ParticipantAgeCategory:
+  name: Kategorie věku účastníků
+GameLengthCategory:
+  name: Kategorie délky programu
+PreparationLengthCategory:
+  name: Kategorie délky přípravy
+MaterialRequirementCategory:
+  name: Kategorie množství materiálu
+OrganizersNumberCategory:
+  name: Kategorie početu orgů pro uvedení
+

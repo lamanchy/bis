@@ -24,7 +24,7 @@ def translate_model(model):
 
     translations = model_translations[model_name]
     model._meta.verbose_name = translations['name']
-    model._meta.verbose_name_plural = translations['name_plural']
+    model._meta.verbose_name_plural = translations.get('name_plural', model._meta.verbose_name)
     for attr_name in dir(model):
         attr = getattr(model, attr_name)
         if not isinstance(attr, DeferredAttribute):

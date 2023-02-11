@@ -1,0 +1,42 @@
+{% extends "game_book/base.html" %}
+
+{% load django_bootstrap5 game_book_tags %}
+
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <a class="btn btn-secondary float-end ms-2" href="{% url "game_book" %}" role="button">Zpět</a>
+            <a class="btn btn-secondary float-end" href="{% url "edit_game" object.pk %}" role="button">Upravit</a>
+            <h1>{{ object.name }}</h1>
+
+
+            {% game_detail_field "created_at" %}
+            {% game_detail_field "contributor" %}
+            {% game_detail_field "is_original" %}
+            {% game_detail_field "origin" %}
+            {% game_detail_field "administration_unit" %}
+            {% game_detail_field "thumbs_up" "count" %}
+            {% game_detail_field "favourites" "count" %}
+            {% game_detail_field "watchers" "count" %}
+            {% game_detail_field "stars" "count" %}
+            {% game_detail_field "is_verified" %}
+            {% game_detail_field "tags" "join" %}
+            {% game_detail_field "physical_category" %}
+            {% game_detail_field "mental_category" %}
+            {% game_detail_field "location_category" "join" %}
+            {% game_detail_field "participant_number_category" "join" %}
+            {% game_detail_field "participant_age_category" "join" %}
+            {% game_detail_field "game_length_category" %}
+            {% game_detail_field "preparation_length_category" %}
+            {% game_detail_field "material_requirement_category" %}
+            {% game_detail_field "organizers_number_category" %}
+            {% game_detail_field "short_description" %}
+            {% game_detail_field "goal" %}
+            {% game_detail_field "description" %}
+            {% game_detail_field "motivation" %}
+            {% game_detail_field "notes" %}
+
+        </div>
+    </div>
+
+{% endblock %}
