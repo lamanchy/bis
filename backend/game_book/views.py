@@ -1,4 +1,5 @@
 from django.contrib import messages
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.forms import inlineformset_factory
 from django.views.generic import TemplateView, FormView, CreateView, UpdateView, DetailView
 
@@ -43,7 +44,7 @@ class FormsetHandlingMixin:
         return self.render_to_response(self.get_context_data(formset=formset))
 
 
-class NewGameView(FormsetHandlingMixin, CreateView):
+class NewGameView(LoginRequiredMixin, FormsetHandlingMixin, CreateView):
     model = Game
     form_class = GameForm
     formset_class = GameFileFormSet
@@ -54,7 +55,7 @@ class NewGameView(FormsetHandlingMixin, CreateView):
         return super().form_valid(form)
 
 
-class EditGameView(FormsetHandlingMixin, UpdateView):
+class EditGameView(LoginRequiredMixin, FormsetHandlingMixin, UpdateView):
     model = Game
     form_class = GameForm
     formset_class = GameFileFormSet

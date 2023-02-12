@@ -271,5 +271,5 @@ THUMBNAIL_SIZES = {
 }
 
 BOOTSTRAP5 = {'required_css_class': 'required'}
-
+LOGIN_URL = "/login"
 
