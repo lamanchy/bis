@@ -5,8 +5,12 @@
 {% block content %}
     <div class="row">
         <div class="col">
-            <a class="btn btn-secondary float-end ms-2" href="{% url "game_book" %}" role="button">Zpět</a>
-            <a class="btn btn-secondary float-end" href="{% url "edit_game" object.pk %}" role="button">Upravit</a>
+            <a class="btn btn-secondary float-end m-1" href="{% url "game_book" %}" role="button">Zpět</a>
+            <a class="btn btn-secondary float-end m-1" href="{% url "edit_game" object.pk %}" role="button">Upravit</a>
+            <a class="btn btn-secondary float-end m-1" href="{% url "edit_game" object.pk %}" role="button">todo fav</a>
+            <a class="btn btn-secondary float-end m-1" href="{% url "edit_game" object.pk %}" role="button">todo verify</a>
+            <a class="btn btn-secondary float-end m-1" href="{% url "edit_game" object.pk %}" role="button">todo like</a>
+            <a class="btn btn-secondary float-end m-1" href="{% url "edit_game" object.pk %}" role="button">todo watch</a>
             <h1>{{ object.name }}</h1>
 
 
@@ -36,6 +40,10 @@
             {% game_detail_field "motivation" %}
             {% game_detail_field "notes" %}
 
+            <h4>todo soubory</h4>
+            <h4>todo komentare</h4>
+            <h4>todo uvedeni na akcich</h4>
+            <h4>todo pridat do meho seznamu her</h4>
         </div>
     </div>
 

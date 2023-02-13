@@ -55,6 +55,8 @@ class EventFilter(FilterSet):
         model = Event
         fields = []
 
+    # todo set choices at __init__, so addming au does not require restart
+
 
 class OpportunityFilter(FilterSet):
     category = ChoiceInFilter(

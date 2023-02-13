@@ -1,8 +1,53 @@
-from django.forms import ModelForm, TextInput, BaseModelFormSet, inlineformset_factory
-from django import  forms
+from django import forms
+from django.forms import ModelForm, TextInput, Form
 from django.forms.utils import ErrorList
 
-from game_book.models import Game, GameFile
+from administration_units.models import AdministrationUnit
+from game_book.models import Game
+from game_book_categories.models import Tag, PhysicalCategory, MentalCategory, LocationCategory, \
+    ParticipantNumberCategory, ParticipantAgeCategory, GameLengthCategory, PreparationLengthCategory, \
+    MaterialRequirementCategory, OrganizersNumberCategory
+
+
+class FilterForm(Form):
+    search_input = forms.CharField(required=False)
+    order = forms.ChoiceField(choices=(
+        ("-created_at", 'Nejnovější'),
+        ("thumbs_up", 'Nejpopulárnější'),
+        ("favourites", 'Nejoblíbenější'),
+    ))
+
+    only_my_games = forms.BooleanField(required=False)
+    only_my_favourites = forms.BooleanField(required=False)
+    only_watched_by_me = forms.BooleanField(required=False)
+    is_original = forms.BooleanField(required=False)
+    is_verified = forms.BooleanField(required=False)
+
+    created_at__gte = forms.DateField(required=False, widget=TextInput(attrs={"type": "date"}))
+    created_at__lte = forms.DateField(required=False, widget=TextInput(attrs={"type": "date"}))
+    contributor = forms.CharField(required=False)
+    administration_unit = forms.ModelChoiceField(queryset=AdministrationUnit.objects.all(), required=False)
+    tags = forms.ModelMultipleChoiceField(queryset=Tag.objects.all(), widget=forms.CheckboxSelectMultiple(),
+                                          required=False)
+    physical_category = forms.ModelMultipleChoiceField(queryset=PhysicalCategory.objects.all(),
+                                                       widget=forms.CheckboxSelectMultiple(), required=False)
+    mental_category = forms.ModelMultipleChoiceField(queryset=MentalCategory.objects.all(),
+                                                     widget=forms.CheckboxSelectMultiple(), required=False)
+    location_category = forms.ModelMultipleChoiceField(queryset=LocationCategory.objects.all(),
+                                                       widget=forms.CheckboxSelectMultiple(), required=False)
+    participant_number_category = forms.ModelMultipleChoiceField(queryset=ParticipantNumberCategory.objects.all(),
+                                                                 widget=forms.CheckboxSelectMultiple(), required=False)
+    participant_age_category = forms.ModelMultipleChoiceField(queryset=ParticipantAgeCategory.objects.all(),
+                                                              widget=forms.CheckboxSelectMultiple(), required=False)
+    game_length_category = forms.ModelMultipleChoiceField(queryset=GameLengthCategory.objects.all(),
+                                                          widget=forms.CheckboxSelectMultiple(), required=False)
+    preparation_length_category = forms.ModelMultipleChoiceField(queryset=PreparationLengthCategory.objects.all(),
+                                                                 widget=forms.CheckboxSelectMultiple(), required=False)
+    material_requirement_category = forms.ModelMultipleChoiceField(queryset=MaterialRequirementCategory.objects.all(),
+                                                                   widget=forms.CheckboxSelectMultiple(),
+                                                                   required=False)
+    organizers_number_category = forms.ModelMultipleChoiceField(queryset=OrganizersNumberCategory.objects.all(),
+                                                                widget=forms.CheckboxSelectMultiple(), required=False)
 
 
 class GameForm(ModelForm):
@@ -15,7 +60,6 @@ class GameForm(ModelForm):
         else:
             self.fields['contributor'].choices = [(self.instance.contributor.id, self.instance.contributor)]
             self.fields['contributor'].disabled = True
-
 
     class Meta:
         model = Game
@@ -53,8 +97,8 @@ class GameForm(ModelForm):
             "notes",
         ]
         widgets = {
-            "is_hidden": forms.CheckboxInput(attrs={'disabled':True}),
-            "is_verified": forms.CheckboxInput(attrs={'disabled':True}),
+            "is_hidden": forms.CheckboxInput(attrs={'disabled': True}),
+            "is_verified": forms.CheckboxInput(attrs={'disabled': True}),
             "tags": forms.CheckboxSelectMultiple(),
             "physical_category": forms.RadioSelect(),
             "mental_category": forms.RadioSelect(),

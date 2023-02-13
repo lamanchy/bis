@@ -1,7 +1,69 @@
 {% extends "game_book/base.html" %}
 
+{% load django_bootstrap5 %}
+{% load static %}
+
 {% block content %}
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
+    <div class="row mb-3">
+        <div class="col d-inline-flex gap-1 align-items-center flex-wrap">
+            Rychlé filtry (todo):
+            <a href="#" class="btn btn-primary">Seznamky</a>
+            <a href="#" class="btn btn-primary">Drobničky</a>
+            <a href="#" class="btn btn-primary">Mé</a>
+            <a href="#" class="btn btn-primary">Mnou oblíbené</a>
+            <a href="#" class="btn btn-primary">Eko</a>
+            <a href="#" class="btn btn-primary">Nové</a>
+            <a href="#" class="btn btn-primary">Ověřené</a>
+            <a class="btn btn-secondary ms-auto" data-bs-toggle="offcanvas" href="#filterPanel" role="button">Vlastní
+                filtry</a>
+
+            <div class="offcanvas offcanvas-start" tabindex="-1" id="filterPanel" aria-labelledby="filterPanelLabel"
+                 style="width: 800px">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="filterPanelLabel">Vlastní filtry</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <form method="get">
+                        {% bootstrap_form form layout="floating" %}
+                        {% bootstrap_button button_type="submit" content="Hledat" %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <form class="col" onsubmit="handle_submit(this, event)" id="search_form">
+            <div class="row">
+                <div class="col-md-6 col-lg-4 d-inline-flex gap-1 align-items-center mb-3">
+                    <input type="text" name="search_input" id="search_input" class="form-control w-sm-25"
+                           placeholder="Hledej v textu" {% if form.search_input.value %}value="{{ form.search_input.value }}" {% endif %}>
+                    <input type="submit" class="btn btn-primary" value="Hledej">
+                </div>
+                <div class="col-md-6 col-lg-8 d-inline-flex gap-1 align-items-center mb-3">
+                    <button type="button" class="btn btn-outline-secondary ms-auto" onclick="location.search = ''">reset</button>
+                    <select name="order" id="order" class="form-select w-auto"
+                            onchange="this.form.submit()">
+                        {% for value, option in form.fields.order.choices %}
+                            <option value="{{ value }}"
+                                    {% if value == form.order.value %}selected{% endif %}>{{ option }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </form>
+        <script>
+            function handle_submit(form, event) {
+                event.preventDefault()
+                let searchParams = new URLSearchParams(window.location.search)
+                searchParams.set("search_input", form.querySelector("#search_input").value)
+                searchParams.set("order", form.querySelector("#order").value)
+                window.location.search = searchParams.toString()
+            }
+        </script>
+    </div>
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 g-4">
         {% for game in games %}
             <div class="col">
                 <div class="card">

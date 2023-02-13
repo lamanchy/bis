@@ -7,18 +7,18 @@
         <div class="col">
             {% if page == "new_game" %}
                 <a class="btn btn-danger float-end" href="{% url "game_book" %}" role="button">Zpět</a>
-                <h1>Vytvořit nový program</h1>
+                <h1 class="mb-3">Vytvořit nový program</h1>
             {% else %}
                 <a class="btn btn-danger float-end" href="{% url "game" object.pk %}" role="button">Zpět</a>
-                <h1>Úprava programu</h1>
+                <h1 class="mb-3">Úprava programu</h1>
             {% endif %}
 
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
 
-                {% bootstrap_form form layout="horizontal" %}
+                {% bootstrap_form form layout="floating" %}
 
-                {% bootstrap_formset formset layout="horizontal" %}
+                {% bootstrap_formset formset layout="floating" %}
 
                 {% bootstrap_button button_type="submit" content="Uložit" %}
                 {% bootstrap_button button_type="reset" button_class="btn-secondary" content="Resetovat změny" %}

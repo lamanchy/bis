@@ -52,6 +52,8 @@ except IndexError:
 # Application definition
 
 INSTALLED_APPS = [
+    # 'dal',
+    # 'dal_select2',
     'admin_numeric_filter',
     'project.apps.MyAdminConfig',
     'django.contrib.auth',
@@ -270,6 +272,11 @@ THUMBNAIL_SIZES = {
     'large': 1920,
 }
 
-BOOTSTRAP5 = {'required_css_class': 'required'}
+BOOTSTRAP5 = {
+    'required_css_class': 'required',
+    'field_renderers': {
+        'default': 'game_book.filters.GameBookFieldRenderer',
+    },
+}
 LOGIN_URL = "/login"
 
