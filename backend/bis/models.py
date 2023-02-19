@@ -386,11 +386,6 @@ class User(AbstractBaseUser):
         queries = [Q(id=perm.user.id)]  # me
 
         if perm.source != 'backend':
-            queries += [
-                # orgove akci, kde perm.user byl ucastnik
-                Q(events_where_was_organizer__record__participants=perm.user),
-            ]
-
             if perm.user.is_organizer:
                 queries += [
                     # lidi kolem akci, kde perm.user byl organizer
