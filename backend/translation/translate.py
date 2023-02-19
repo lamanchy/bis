@@ -73,4 +73,7 @@ def _(string, **kwargs):
     for part in parts:
         translation = translation[part]
 
+    if isinstance(translation, list):
+        translation = translation[0]
+
     return translation.format(**kwargs)

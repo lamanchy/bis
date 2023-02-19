@@ -1,6 +1,6 @@
 {% extends "game_book/base.html" %}
 
-{% load django_bootstrap5 %}
+{% load django_bootstrap5 static %}
 
 {% block content %}
     <div class="row">
@@ -31,4 +31,8 @@
         </div>
     </div>
 
+{% endblock %}
+
+{% block extra_script %}
+    <script src="{% static "game_book/game_form.js" %}"></script>
 {% endblock %}

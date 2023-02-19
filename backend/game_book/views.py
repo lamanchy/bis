@@ -1,7 +1,11 @@
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.postgres.search import SearchVector
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.forms import inlineformset_factory
+from django.http import JsonResponse
+from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_protect
 from django.views.generic import TemplateView, CreateView, UpdateView, DetailView
 
 from game_book.forms import GameForm, FilterForm
@@ -17,7 +21,24 @@ class GameBookView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        games = Game.objects.all()
+        games = Game.objects.select_related(
+            'contributor',
+            'administration_unit',
+            'physical_category',
+            'mental_category',
+            'game_length_category',
+            'preparation_length_category',
+            'material_requirement_category',
+            'organizers_number_category',
+        ).prefetch_related(
+            'thumbs_up',
+            'favourites',
+            'watchers',
+            'tags',
+            'location_category',
+            'participant_number_category',
+            'participant_age_category',
+        )
         context["form"] = form = FilterForm(self.request.GET)
         setattr(form, 'hide_validation_classes', True)
 
@@ -45,8 +66,24 @@ class GameBookView(TemplateView):
                     games = games.filter(contributor___str__icontains=value)
                 else:
                     games = games.filter(**{field: value})
+        else:
+            assert False
+
+
+        paginator = Paginator(games, 12)
+        page = self.request.GET.get("page")
+        try:
+            games = paginator.page(page)
+        except PageNotAnInteger:
+            # If page is not an integer, deliver first page.
+            games = paginator.page(1)
+        except EmptyPage:
+            # If page is out of range (e.g. 9999), deliver last page of results.
+            games = paginator.page(paginator.num_pages)
 
         context["games"] = games
+        context["url"] = self.request.get_full_path()
+        print(context["url"])
         return context
 
 
@@ -98,3 +135,24 @@ class EditGameView(LoginRequiredMixin, FormsetHandlingMixin, UpdateView):
 class GameView(DetailView):
     model = Game
     extra_context = {**pages}
+
+
+@csrf_protect
+def toggle(request, pk, what):
+    game = get_object_or_404(Game, pk=pk)
+    on = True
+    if what == 'is_verified':
+        # todo check if editor
+        game.is_verified = not game.is_verified
+        game.save()
+        on = game.is_verified
+
+    else:
+        queryset = getattr(game, what)
+        if request.user in queryset.all():
+            queryset.remove(request.user)
+            on = False
+        else:
+            queryset.add(request.user)
+
+    return JsonResponse({"on": on})

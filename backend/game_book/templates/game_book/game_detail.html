@@ -7,12 +7,15 @@
         <div class="col">
             <a class="btn btn-secondary float-end m-1" href="{% url "game_book" %}" role="button">Zpět</a>
             <a class="btn btn-secondary float-end m-1" href="{% url "edit_game" object.pk %}" role="button">Upravit</a>
-            <a class="btn btn-secondary float-end m-1" href="{% url "edit_game" object.pk %}" role="button">todo fav</a>
-            <a class="btn btn-secondary float-end m-1" href="{% url "edit_game" object.pk %}" role="button">todo verify</a>
-            <a class="btn btn-secondary float-end m-1" href="{% url "edit_game" object.pk %}" role="button">todo like</a>
-            <a class="btn btn-secondary float-end m-1" href="{% url "edit_game" object.pk %}" role="button">todo watch</a>
+            <a class="btn btn-secondary float-end m-1" onclick="toggle_state(event, this, {{ object.pk }}, 'favourites')"
+               role="button"><i class="bi bi-star{% if request.user in object.favourites.all %}-fill{% endif %}"></i></a>
+            <a class="btn btn-secondary float-end m-1" onclick="toggle_state(event, this, {{ object.pk }}, 'is_verified')"
+               role="button"><i class="bi bi-patch-check{% if object.is_verified %}-fill{% endif %}"></i></a>
+            <a class="btn btn-secondary float-end m-1" onclick="toggle_state(event, this, {{ object.pk }}, 'thumbs_up')"
+               role="button"><i class="bi bi-hand-thumbs-up{% if request.user in object.thumbs_up.all %}-fill{% endif %}"></i></a>
+            <a class="btn btn-secondary float-end m-1" onclick="toggle_state(event, this, {{ object.pk }}, 'watchers')"
+               role="button"><i class="bi bi-eye{% if request.user in object.watchers.all %}-fill{% endif %}"></i></a>
             <h1>{{ object.name }}</h1>
-
 
             {% game_detail_field "created_at" %}
             {% game_detail_field "contributor" %}

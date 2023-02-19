@@ -28,7 +28,7 @@ class Game(BaseModel):
     # internal
     is_hidden = BooleanField(default=False)
     game_id = UUIDField(default=uuid4, editable=False)  # revisions of same game have different id, same game_id
-    created_at = DateTimeField(auto_now=True)
+    created_at = DateTimeField(auto_now_add=True)
 
     # origin
     contributor = ForeignKey(User, on_delete=PROTECT, related_name='games')
@@ -81,6 +81,9 @@ class Game(BaseModel):
 
     def get_absolute_url(self):
         return reverse('game', kwargs={'pk' : self.pk})
+
+    class Meta:
+        ordering = '-created_at',
 
 @translate_model
 class BaseFile(BaseModel):

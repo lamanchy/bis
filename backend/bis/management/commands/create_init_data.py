@@ -226,110 +226,120 @@ class Command(BaseCommand):
             accessibility_from_brno=LocationAccessibilityCategory.objects.get(slug='good'),
         ))
 
-
-        tags = ['icebreaker', 'seznamka', 'dynamix', 'důvěrovka', 'simulační', 'strategie', 'drobnička', 'eko',
-                'diskuzní', 'orvo', 'larp', 'team building', 'kreativní', 'psycho', 'reflexe', 'noční']
+        # good emoji overview at https://www.piliapp.com/emoji/list/
+        tags = ['🧊icebreaker', '🤝seznamka', '🌪dynamix', '🙏důvěrovka', '🎮simulační', '📈strategie', '🐁drobnička',
+                '🌱eko', '🗣diskuzní', '🤕orvo', '🦄larp', '🪜team building', '🎨kreativní', '🤬psycho', '🔎reflexe',
+                '🌙noční']
         for tag in tags:
-            Tag.objects.get_or_create(name=tag)
+            Tag.objects.update_or_create(name=tag[1:], defaults=dict(emoji=tag[0]))
 
         PhysicalCategory.objects.update_or_create(slug="minimal", defaults=dict(
-            name="Na místě", description="Programy sedící či s minimem pohybu mezi účasníky"))
+            emoji="🧘", name="Na místě", description="Programy sedící či s minimem pohybu mezi účasníky"))
         PhysicalCategory.objects.update_or_create(slug="moving", defaults=dict(
-            name="Chodící", description="Během programu něco nachodím, zahřeji se, ale nezpotím"))
+            emoji="🚶", name="Chodící", description="Během programu něco nachodím, zahřeji se, ale nezpotím"))
         PhysicalCategory.objects.update_or_create(slug="running", defaults=dict(
-            name="Běhací", description="Unavím se, ale nezničím se"))
+            emoji="🏃", name="Běhací", description="Unavím se, ale nezničím se"))
         PhysicalCategory.objects.update_or_create(slug="hardcore", defaults=dict(
-            name="Náročná", description="Po skončení někam odpadnu"))
+            emoji="🏋", name="Náročný", description="Po skončení někam odpadnu"))
 
         MentalCategory.objects.update_or_create(slug="minimal", defaults=dict(
-            name="Nenáročná", description="Odpočinkové programy, u kterých můžu vypnout hlavu"))
+            emoji="😌", name="Nenáročný", description="Odpočinkové programy, u kterých můžu vypnout hlavu"))
         MentalCategory.objects.update_or_create(slug="thinking", defaults=dict(
-            name="Mozek potřeba", description="Trochu kreativity to chce, ale nic náročného"))
+            emoji="🤔", name="Mozek potřeba", description="Trochu kreativity to chce, ale nic náročného"))
         MentalCategory.objects.update_or_create(slug="logically_demanding", defaults=dict(
-            name="Analyticky náročná", description="Plánování strategie, řešení šifer, komunikace v časovém presu"))
+            emoji="📈", name="Analyticky náročný",
+            description="Plánování strategie, řešení šifer, komunikace v časovém presu"))
         MentalCategory.objects.update_or_create(slug="emotionally_demanding", defaults=dict(
-            name="Emočně náročná", description="Přemýšlecí otázky, řešení hodnot, pocitů, sdílení"))
+            emoji="💔", name="Emočně náročný", description="Přemýšlecí otázky, řešení hodnot, pocitů, sdílení"))
         MentalCategory.objects.update_or_create(slug="hardcore", defaults=dict(
-            name="Psycho", description="Kombinace náročných prvků, narušování komforní zóny, nutnost aktivně řešit psychickou bezpečnost"))
+            emoji="🤬", name="Psycho",
+            description="Kombinace náročných prvků, narušování komforní zóny, nutnost aktivně řešit psychickou bezpečnost"))
 
         LocationCategory.objects.update_or_create(slug="tearoom", defaults=dict(
-            name="Čajovna", description="Klidné a komfortní místo s hezkou atmosférou, omezené množství pohybu"))
+            emoji="🫖", name="Čajovna",
+            description="Klidné a komfortní místo s hezkou atmosférou, omezené množství pohybu"))
         LocationCategory.objects.update_or_create(slug="hall", defaults=dict(
-            name="Větší místnost", description="Sál či místnost dostatkem prostoru, relativní teplo"))
+            emoji="🏠", name="Větší místnost", description="Sál či místnost dostatkem prostoru, relativní teplo"))
         LocationCategory.objects.update_or_create(slug="in_a_circle", defaults=dict(
-            name="V kruhu (kolem ohně)", description="Všichi na sebe vidí, tepelný komfort, omezený pohyb"))
+            emoji="🔥", name="V kruhu (kolem ohně)", description="Všichi na sebe vidí, tepelný komfort, omezený pohyb"))
         LocationCategory.objects.update_or_create(slug="field", defaults=dict(
-            name="Louka", description="Louka či park, dost prostoru na sezení či běhání"))
+            emoji="🌿", name="Louka", description="Louka či park, dost prostoru na sezení či běhání"))
         LocationCategory.objects.update_or_create(slug="forest", defaults=dict(
-            name="Les", description="Kousek lesa se stromy"))
+            emoji="🌲", name="Les", description="Kousek lesa se stromy"))
         LocationCategory.objects.update_or_create(slug="village", defaults=dict(
-            name="Vesnice", description="Či město, výskyt lidí v okolí"))
+            emoji="🏘", name="Vesnice", description="Či město, výskyt lidí v okolí"))
         LocationCategory.objects.update_or_create(slug="water", defaults=dict(
-            name="Voda", description="Nutno větší množství vody, na koupání či čvachtání"))
+            emoji="💧", name="Voda", description="Nutno větší množství vody, na koupání či čvachtání"))
         LocationCategory.objects.update_or_create(slug="at_road", defaults=dict(
-            name="K cestě", description="Možno hrát během putování či přesunu"))
+            emoji="🛣", name="K cestě", description="Možno hrát během putování či přesunu"))
         LocationCategory.objects.update_or_create(slug="specific", defaults=dict(
-            name="Specifické umístění", description="K programu třeba specifické místo (ať konkrétní či zřídké)"))
+            emoji="❓", name="Specifické umístění",
+            description="K programu třeba specifické místo (ať konkrétní či zřídké)"))
 
         ParticipantNumberCategory.objects.update_or_create(slug="individual", defaults=dict(
-            name="Pro jednotlivce", description="Každý hraje sám, lib. množství účastníků"))
+            emoji="🚲", name="Pro jednotlivce", description="Každý hraje sám, lib. množství účastníků"))
         ParticipantNumberCategory.objects.update_or_create(slug="small", defaults=dict(
-            name="Malá skupinka (4-6)", description="Skupinka 4-6 lidí"))
+            emoji="🚗", name="Malá skupinka (4-6)", description="Skupinka 4-6 lidí"))
         ParticipantNumberCategory.objects.update_or_create(slug="few", defaults=dict(
-            name="Skupina lidí (10+)", description="Zepár lidí, přes 10"))
+            emoji="🚐", name="Skupina lidí (10+)", description="Zepár lidí, přes 10"))
         ParticipantNumberCategory.objects.update_or_create(slug="big", defaults=dict(
-            name="Větší skupina (20+)", description="Kolem 20 lidí"))
+            emoji="🚌", name="Větší skupina (20+)", description="Kolem 20 lidí"))
         ParticipantNumberCategory.objects.update_or_create(slug="a_log", defaults=dict(
-            name="Hromada lidí", description="Pro velká skupiny lidí"))
+            emoji="🚢", name="Hromada lidí", description="Pro velká skupiny lidí"))
 
         ParticipantAgeCategory.objects.update_or_create(slug="parents_with_kids", defaults=dict(
-            name="Rodiče s dětmi", description=""))
+            emoji="👪", name="Rodiče s dětmi", description=""))
         ParticipantAgeCategory.objects.update_or_create(slug="preschool", defaults=dict(
-            name="Předškoláci", description=""))
+            emoji="👶", name="Předškoláci", description=""))
         ParticipantAgeCategory.objects.update_or_create(slug="elementary", defaults=dict(
-            name="Školáci", description=""))
+            emoji="🧒", name="Školáci", description=""))
         ParticipantAgeCategory.objects.update_or_create(slug="teen", defaults=dict(
-            name="Středoškoláci", description=""))
+            emoji="🧑", name="Středoškoláci", description=""))
         ParticipantAgeCategory.objects.update_or_create(slug="university", defaults=dict(
-            name="Vysokoškoláci", description=""))
+            emoji="🧑‍🎓", name="Vysokoškoláci", description=""))
         ParticipantAgeCategory.objects.update_or_create(slug="adult", defaults=dict(
-            name="Dospělí", description=""))
+            emoji="🧑‍💼", name="Dospělí", description=""))
         ParticipantAgeCategory.objects.update_or_create(slug="old", defaults=dict(
-            name="Vyspělí", description=""))
-
+            emoji="🧓", name="Vyspělí", description=""))
 
         GameLengthCategory.objects.update_or_create(slug="short", defaults=dict(
-            name="Rychlé (do 10 minut)", description="Krátké programy, jednuché seznamky, rozcvičky, pro vyplnění prostoje"))
+            emoji="⚡", name="Rychlý (do 10 minut)",
+            description="Krátké programy, jednuché seznamky, rozcvičky, pro vyplnění prostoje"))
         GameLengthCategory.objects.update_or_create(slug="an_hour", defaults=dict(
-            name="Střední (do hodiny)", description="Nějakou chvíli účastníky zabaví, dvě tři takové naplní odpoledne"))
+            emoji="🕐", name="Středně dlouhý (do hodiny)",
+            description="Nějakou chvíli účastníky zabaví, dvě tři takové naplní odpoledne"))
         GameLengthCategory.objects.update_or_create(slug="long", defaults=dict(
-            name="Dlouhé (pár hodin)", description="Odpolední program, noční hra"))
+            emoji="🕓", name="Dlouhý (pár hodin)", description="Odpolední program, noční hra"))
         GameLengthCategory.objects.update_or_create(slug="multiple_days", defaults=dict(
-            name="Vícedenní, celotáborové", description="Programy rozprostřené přes několik dní, většinou na pozadí jiných programů"))
+            emoji="📅", name="Vícedenní, celotáborový",
+            description="Program rozprostřený přes několik dní, většinou na pozadí jiných programů"))
 
         PreparationLengthCategory.objects.update_or_create(slug="enough_to_read", defaults=dict(
-            name="Stačí přečíst", description="Zkušený org přečte, a program rovnou uvede"))
+            emoji="⚡", name="Stačí přečíst", description="Zkušený org přečte, a program rovnou uvede"))
         PreparationLengthCategory.objects.update_or_create(slug="need_to_study", defaults=dict(
-            name="Třeba chvíle klidu", description="Netriviální, potřeba pořádně přečíst a pochopit"))
+            emoji="🧘", name="Třeba chvíle klidu", description="Netriviální, potřeba pořádně přečíst a pochopit"))
         PreparationLengthCategory.objects.update_or_create(slug="training", defaults=dict(
-            name="Potřeba se připravit", description="Příprava zabere pár hodin, chystání materiálů, předání dalším orgům"))
+            emoji="🖨", name="Potřeba se připravit",
+            description="Příprava zabere pár hodin, chystání materiálů, předání dalším orgům"))
         PreparationLengthCategory.objects.update_or_create(slug="multiple_sessions", defaults=dict(
-            name="Velmi náročné", description="Rozsáhle rozpracovaný či naopak nedokončený program, nutno věnovat značné úsilí k uvedení"))
+            emoji="📅", name="Náročná příprava",
+            description="Rozsáhle rozpracovaný či naopak nedokončený program, nutno věnovat značné úsilí k uvedení"))
 
         OrganizersNumberCategory.objects.update_or_create(slug="one", defaults=dict(
-            name="Zvládnu sám", description="Uvedení programu zvládne jeden org"))
+            emoji="🧍", name="Zvládnu sám", description="Uvedení programu zvládne jeden org"))
         OrganizersNumberCategory.objects.update_or_create(slug="few", defaults=dict(
-            name="Potřebuji pomocnou ruku", description="Na program je potřeba dva či tři orgové"))
+            emoji="🤝", name="Potřebuji pomocnou ruku", description="Na program je potřeba dva či tři orgové"))
         OrganizersNumberCategory.objects.update_or_create(slug="group", defaults=dict(
-            name="Skupinka orgů", description="Potřeba kolem pěti orgů"))
+            emoji="👪", name="Skupinka orgů", description="Potřeba kolem pěti orgů"))
         OrganizersNumberCategory.objects.update_or_create(slug="a_lot", defaults=dict(
-            name="Spousta orgů", description="Velké hry vyžadující B-tým, atp."))
+            emoji="🌍", name="Spousta orgů", description="Velké hry vyžadující B-tým, atp."))
 
         MaterialRequirementCategory.objects.update_or_create(slug="none", defaults=dict(
-            name="Nic není potřeba", description="Stačí účastníci"))
+            emoji="🚫", name="Nic není potřeba", description="Stačí účastníci"))
         MaterialRequirementCategory.objects.update_or_create(slug="simple", defaults=dict(
-            name="Stačí základ", description="Šátky, tužka a papír, provázek"))
+            emoji="✏", name="Stačí základ", description="Šátky, tužka a papír, provázek"))
         MaterialRequirementCategory.objects.update_or_create(slug="get_some", defaults=dict(
-            name="Potřeba nachystat", description="Tisk pár stránek, kostým, potřeba specifický materiál k programu"))
+            emoji="🖨", name="Potřeba nachystat",
+            description="Tisk pár stránek, kostým, potřeba specifický materiál k programu"))
         MaterialRequirementCategory.objects.update_or_create(slug="complicated", defaults=dict(
-            name="Kdo se s tím potáhne?", description="Velké množství či velmi specifický materiál"))
+            emoji="🚚", name="Kdo se s tím potáhne?", description="Velké množství či velmi specifický materiál"))

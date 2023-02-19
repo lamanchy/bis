@@ -1,0 +1,31 @@
+#filterPanel {
+    width: 800px;
+}
+
+.required > label:after {
+    content: "*";
+}
+
+
+.select2-selection--single {
+    height: calc(3.5rem + 2px)!important;
+    line-height: 1.25!important;
+    padding-top: 1.625rem!important;
+    padding-bottom: 0.625rem!important;
+}
+
+.form-label {
+    z-index: 1;
+}
+
+#id_tags, #id_participant_age_category {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    column-gap: 10px
+}
+
+
+#pagination {
+    display: flex;
+    justify-content: center;
+}
