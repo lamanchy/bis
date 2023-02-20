@@ -7,12 +7,16 @@
         <div class="col">
             <a class="btn btn-secondary float-end m-1" href="{% url "game_book" %}" role="button">Zpět</a>
             <a class="btn btn-secondary float-end m-1" href="{% url "edit_game" object.pk %}" role="button">Upravit</a>
-            <a class="btn btn-secondary float-end m-1" onclick="toggle_state(event, this, {{ object.pk }}, 'favourites')"
-               role="button"><i class="bi bi-star{% if request.user in object.favourites.all %}-fill{% endif %}"></i></a>
-            <a class="btn btn-secondary float-end m-1" onclick="toggle_state(event, this, {{ object.pk }}, 'is_verified')"
+            <a class="btn btn-secondary float-end m-1"
+               onclick="toggle_state(event, this, {{ object.pk }}, 'favourites')"
+               role="button"><i
+                    class="bi bi-star{% if request.user in object.favourites.all %}-fill{% endif %}"></i></a>
+            <a class="btn btn-secondary float-end m-1"
+               onclick="toggle_state(event, this, {{ object.pk }}, 'is_verified')"
                role="button"><i class="bi bi-patch-check{% if object.is_verified %}-fill{% endif %}"></i></a>
             <a class="btn btn-secondary float-end m-1" onclick="toggle_state(event, this, {{ object.pk }}, 'thumbs_up')"
-               role="button"><i class="bi bi-hand-thumbs-up{% if request.user in object.thumbs_up.all %}-fill{% endif %}"></i></a>
+               role="button"><i
+                    class="bi bi-hand-thumbs-up{% if request.user in object.thumbs_up.all %}-fill{% endif %}"></i></a>
             <a class="btn btn-secondary float-end m-1" onclick="toggle_state(event, this, {{ object.pk }}, 'watchers')"
                role="button"><i class="bi bi-eye{% if request.user in object.watchers.all %}-fill{% endif %}"></i></a>
             <h1>{{ object.name }}</h1>
@@ -43,10 +47,42 @@
             {% game_detail_field "motivation" %}
             {% game_detail_field "notes" %}
 
-            <h4>todo soubory</h4>
-            <h4>todo komentare</h4>
-            <h4>todo uvedeni na akcich</h4>
-            <h4>todo pridat do meho seznamu her</h4>
+            <h5>Soubory:</h5>
+            {% for file in object.files.all %}
+                <a href="{{ file.file.url }}">{{ file.filename }}</a>
+            {% endfor %}
+
+            <h5>Komentáře:</h5>
+            <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {% bootstrap_form form layout="floating" %}
+                {% bootstrap_formset formset layout="floating" %}
+                <button class="btn btn-secondary" type="button" onclick="add_form(this);">Přiložit další soubor</button>
+                {% bootstrap_button button_type="submit" content="Okomentovat" %}
+            </form>
+            <div class="row">
+                <div class="col">created_at</div>
+                <div class="col">author</div>
+                <div class="col">comment</div>
+                <div class="col">is_hidden</div>
+                <div class="col">files</div>
+            </div>
+            {% for comment in object.comments.all %}
+                <div class="row">
+                    <div class="col">{{ comment.created_at }}</div>
+                    <div class="col">{{ comment.author }}</div>
+                    <div class="col">{{ comment.comment }}</div>
+                    <div class="col">{{ comment.is_hidden }}</div>
+                    <div class="col">
+                        {% for file in comment.files.all %}
+                            <div><a href="{{ file.file.url }}">{{ file.filename }}</a></div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endfor %}
+
+            <h5>todo uvedeni na akcich</h5>
+            <h5>todo pridat do meho seznamu her</h5>
         </div>
     </div>
 

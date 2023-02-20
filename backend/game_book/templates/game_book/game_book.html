@@ -78,7 +78,8 @@
                         <a class="btn btn-outline-secondary ms-1 float-end"
                            onclick="toggle_state(event, this, {{ game.pk }}, 'favourites')"
                            style="margin-top: -0.8rem; margin-right: -0.8rem"
-                           role="button"><i class="bi bi-star{% if request.user in game.favourites.all %}-fill{% endif %}"></i></a>
+                           role="button"><i
+                                class="bi bi-star{% if request.user in game.favourites.all %}-fill{% endif %}"></i></a>
                         <a class="btn btn-outline-secondary ms-1 float-end"
                            onclick="toggle_state(event, this, {{ game.pk }}, 'is_verified')"
                            style="margin-top: -0.8rem; "
@@ -86,11 +87,13 @@
                         <a class="btn btn-outline-secondary ms-1 float-end"
                            onclick="toggle_state(event, this, {{ game.pk }}, 'thumbs_up')"
                            style="margin-top: -0.8rem; "
-                           role="button"><i class="bi bi-hand-thumbs-up{% if request.user in game.thumbs_up.all %}-fill{% endif %}"></i></a>
+                           role="button"><i
+                                class="bi bi-hand-thumbs-up{% if request.user in game.thumbs_up.all %}-fill{% endif %}"></i></a>
                         <a class="btn btn-outline-secondary ms-1 float-end"
                            onclick="toggle_state(event, this, {{ game.pk }}, 'watchers')"
                            style="margin-top: -0.8rem; "
-                           role="button"><i class="bi bi-eye{% if request.user in game.watchers.all %}-fill{% endif %}"></i></a>
+                           role="button"><i
+                                class="bi bi-eye{% if request.user in game.watchers.all %}-fill{% endif %}"></i></a>
                         <h5 class="card-title">{{ game.name }}</h5>
                         <p class="card-text">{{ game.short_description }}</p>
                     </div>
@@ -116,10 +119,60 @@
         {% endfor %}
     </div>
 
+{#    <div class="row">#}
+{#    </div>#}
+{#    {% for game in games %}#}
+{#        <div class="row">#}
+{#            <div class="col"><h5>{{ game.name }}</h5></div>#}
+{#            <div class="col">{{ game.short_description }}</div>#}
+{#            <div class="col-3">#}
+{#                <a class="btn btn-outline-secondary ms-1 mt-1 mb-1"#}
+{#                   onclick="toggle_state(event, this, {{ game.pk }}, 'favourites')"#}
+{#                   role="button"><i class="bi bi-star{% if request.user in game.favourites.all %}-fill{% endif %}"></i></a>#}
+{#                <a class="btn btn-outline-secondary ms-1 mt-1 mb-1"#}
+{#                   onclick="toggle_state(event, this, {{ game.pk }}, 'is_verified')"#}
+{#                   role="button"><i class="bi bi-patch-check{% if game.is_verified %}-fill{% endif %}"></i></a>#}
+{#                <a class="btn btn-outline-secondary ms-1 mt-1 mb-1"#}
+{#                   onclick="toggle_state(event, this, {{ game.pk }}, 'thumbs_up')"#}
+{#                   role="button"><i#}
+{#                        class="bi bi-hand-thumbs-up{% if request.user in game.thumbs_up.all %}-fill{% endif %}"></i></a>#}
+{#                <a class="btn btn-outline-secondary ms-1 mt-1 mb-1"#}
+{#                   onclick="toggle_state(event, this, {{ game.pk }}, 'watchers')"#}
+{#                   role="button"><i class="bi bi-eye{% if request.user in game.watchers.all %}-fill{% endif %}"></i></a>#}
+{#            </div>#}
+{#            <div class="col-5">#}
+{#                <div class="row">#}
+{#                    <div class="col-2 p-1 border-start border-top">#}
+{#                        {% for tag in game.tags.all %}{% category_emoji tag %}{% endfor %}#}
+{#                    </div>#}
+{#                    <div class="col-2 p-1 border-start border-top">#}
+{#                        <span>{% category_emoji game.physical_category %}</span>#}
+{#                        <span>{% category_emoji game.mental_category %}</span>#}
+{#                    </div>#}
+{#                    <div class="col-2 p-1 border-start border-top">#}
+{#                        {% for c in game.location_category.all %}{% category_emoji c %}{% endfor %}#}
+{#                    </div>#}
+{#                    <div class="col-2 p-1 border-start border-top">#}
+{#                        {% for c in game.participant_number_category.all %}{% category_emoji c %}{% endfor %}#}
+{#                    </div>#}
+{#                    <div class="col-2 p-1 border-start border-top">#}
+{#                        {% for c in game.participant_age_category.all %}{% category_emoji c %}{% endfor %}#}
+{#                    </div>#}
+{#                    <div class="col-2 p-1 border-start border-top">#}
+{#                        <span>{% category_emoji game.game_length_category %}</span>#}
+{#                        <span>{% category_emoji game.preparation_length_category %}</span>#}
+{#                        <span>{% category_emoji game.material_requirement_category %}</span>#}
+{#                        <span>{% category_emoji game.organizers_number_category %}</span>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    {% endfor %}#}
+
     <div class="row mt-3">
-    <div class="col" id="pagination">
-        {% bootstrap_pagination games url=url size="sm" %}
-    </div>
+        <div class="col" id="pagination">
+            {% bootstrap_pagination games url=url size="sm" %}
+        </div>
     </div>
 {% endblock %}
 

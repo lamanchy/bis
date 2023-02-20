@@ -5,7 +5,7 @@ from django.utils.safestring import mark_safe
 
 from administration_units.models import AdministrationUnit
 from bis.models import User
-from game_book.models import Game
+from game_book.models import Game, Comment
 from game_book_categories.models import Tag, PhysicalCategory, MentalCategory, LocationCategory, \
     ParticipantNumberCategory, ParticipantAgeCategory, GameLengthCategory, PreparationLengthCategory, \
     MaterialRequirementCategory, OrganizersNumberCategory
@@ -136,3 +136,12 @@ class GameForm(ModelForm):
             "motivation": forms.Textarea(attrs={"rows": 2}),
             "notes": forms.Textarea(attrs={"rows": 2}),
         }
+
+
+class CommentForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = [
+            "comment",
+            "is_hidden",
+        ]

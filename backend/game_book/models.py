@@ -1,3 +1,4 @@
+from os.path import basename
 from uuid import uuid4
 
 from django.core.exceptions import ValidationError
@@ -15,7 +16,7 @@ from translation.translate import translate_model
 
 class BaseModel(Model):
     class Meta:
-        ordering = 'id',
+        ordering = '-id',
         abstract = True
 
     def __str__(self):
@@ -82,15 +83,15 @@ class Game(BaseModel):
     def get_absolute_url(self):
         return reverse('game', kwargs={'pk' : self.pk})
 
-    class Meta:
-        ordering = '-created_at',
-
 @translate_model
 class BaseFile(BaseModel):
     file = FileField(upload_to='game_files')
 
     def __str__(self):
         return self.file.name
+
+    def filename(self):
+        return basename(self.file.name)
 
     class Meta:
         ordering = 'id',
@@ -110,6 +111,9 @@ class Comment(BaseModel):
 
     def __str__(self):
         return f"Komentář"
+
+    def get_absolute_url(self):
+        return reverse('game', kwargs={'pk' : self.game.pk})
 
 @translate_model
 class CommentFile(BaseFile):

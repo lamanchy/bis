@@ -7,9 +7,10 @@ from django.http import JsonResponse
 from django.shortcuts import get_object_or_404
 from django.views.decorators.csrf import csrf_protect
 from django.views.generic import TemplateView, CreateView, UpdateView, DetailView
+from django.views.generic.edit import ModelFormMixin
 
-from game_book.forms import GameForm, FilterForm
-from game_book.models import Game, GameFile
+from game_book.forms import GameForm, FilterForm, CommentForm
+from game_book.models import Game, GameFile, Comment, CommentFile
 
 pages = {"pages": {"game_book": "Programy", "new_game": "Vytvořit nový"}}
 
@@ -83,11 +84,11 @@ class GameBookView(TemplateView):
 
         context["games"] = games
         context["url"] = self.request.get_full_path()
-        print(context["url"])
         return context
 
 
-GameFileFormSet = inlineformset_factory(Game, GameFile, fields=['file'])
+GameFileFormSet = inlineformset_factory(Game, GameFile, fields=['file'], extra=1, can_delete_extra=False)
+CommentFileFormSet = inlineformset_factory(Comment, CommentFile, fields=['file'], extra=1, can_delete=False)
 
 
 class FormsetHandlingMixin:
@@ -132,10 +133,42 @@ class EditGameView(LoginRequiredMixin, FormsetHandlingMixin, UpdateView):
     extra_context = {**pages}
 
 
-class GameView(DetailView):
+class GameView(ModelFormMixin, DetailView):
     model = Game
     extra_context = {**pages}
+    form_class = CommentForm
+    formset_class = CommentFileFormSet
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context.setdefault('formset', self.formset_class())
+        return context
+
+    def post(self, request, *args, **kwargs):
+        """
+        Handle POST requests: instantiate a form instance with the passed
+        POST variables and then check if it's valid.
+        """
+        form = self.get_form()
+        if not form.is_valid():
+            return self.form_invalid(form)
+
+        form.instance.author = self.request.user
+        form.instance.game = self.get_object()
+
+        formset = self.formset_class(request.POST, request.FILES, instance=form.instance)
+        if not formset.is_valid():
+            return self.render_to_response(self.get_context_data(formset=formset))
+
+        form.save()
+        formset.save()
+        messages.info(request, "Úspěšně uloženo")
+        return self.form_valid(form)
+
+    # PUT is a valid HTTP verb for creating (with a known URL) or editing an
+    # object, note that browsers only support POST for now.
+    def put(self, *args, **kwargs):
+        return self.post(*args, **kwargs)
 
 @csrf_protect
 def toggle(request, pk, what):

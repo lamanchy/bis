@@ -10,7 +10,6 @@ urlpatterns = [
     path("game/<int:pk>/", GameView.as_view(), name="game"),
     path("game/<int:pk>/edit/", EditGameView.as_view(), name="edit_game"),
 
-
     path("game/<int:pk>/toggle/<str:what>/", game_book.views.toggle),
 
     # path('autocomplete/administration_unit/', AdministrationUnitAutocomplete.as_view(),
