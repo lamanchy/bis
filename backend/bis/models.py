@@ -556,22 +556,20 @@ class Qualification(Model):
                                                  'public__volunteering', 'public__only_experiential',
                                                  'public__sports', 'public__educational__course',
                                                  'public__educational__ohb', 'public__other__for_public', }
+
+        if category not in qualification_required_for_categories:
+            return
+
         if not age:
             raise ValidationError('Není znám věk hlavního organizátora')
 
         if age < 18:
             raise ValidationError('Hlavní organizátor musí mít aspoň 18 let')
 
-        if category not in qualification_required_for_categories:
-            return
-
-        if intended_for == 'for_kids' and category == 'internal__section_meeting':
-            return
-
         required_one_of = set()
 
         if intended_for == 'for_kids':
-            if group == 'camp':
+            if group == 'camp' or category == 'internal__section_meeting':
                 required_one_of = {'kids_leader'}
             else:
                 required_one_of = {'kids_intern'}
@@ -589,7 +587,7 @@ class Qualification(Model):
                 required_one_of = {'weekend_organizer'}
 
         if category == 'public__educational__ohb':
-            required_one_of = {'instructor'}
+            required_one_of = {'instructor', 'consultant_for_kids'}
 
         if required_one_of:
             if not cls.user_has_required_qualification(main_organizer, required_one_of):
