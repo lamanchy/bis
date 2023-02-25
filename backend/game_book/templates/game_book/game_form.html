@@ -15,9 +15,12 @@
 
             <form method="post" enctype="multipart/form-data">
                 {% csrf_token %}
+                {{ form.media }}
 
                 {% bootstrap_form form layout="floating" %}
 
+                <h3>Fotky a soubory:</h3>
+                <div class="form-text">Lze nahrát jakékoli fotky či soubory, podklady pro tisk, ukázky uvedení, atd.</div>
                 {% bootstrap_formset formset layout="floating" %}
                 <button class="btn btn-secondary" type="button" onclick="add_form(this);">Přiložit další soubor</button>
 

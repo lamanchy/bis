@@ -545,7 +545,9 @@ Game:
     is_verified:
       - Je program ověřen?
       - Editor může program ověřit, záruka brontosauří kvality
-    tags: Tagy
+    tags:
+      - Tagy
+      - Pokud ti nějaký tag chybí, napiš mi na sbornik@brontosaurus.cz, díky!
     physical_category: Fyzická náročnost
     physical_note:
       - Poznámky
@@ -594,6 +596,9 @@ Game:
     motivation:
       - Motivace
       - Tipy na vtáhnutí účastníků do hry (scénkou, hudbou, aktivitkou)
+    material:
+      - Soupis materiálu
+      - Co je potřeba k uvedení hry, soubory pro tisk lze přiložit níže
     notes:
       - Metodické poznámky
       - Tipy a triky pro uvedení, otázky na reflexi, atd.

@@ -1,4 +1,5 @@
 from django import template
+from django.utils.safestring import mark_safe
 
 register = template.Library()
 
@@ -18,6 +19,8 @@ def game_detail_field(context, field, extra=None):
 
     if extra == "join":
         value = ", ".join(str(value) for value in value.all())
+
+    value = mark_safe(value)
 
     if field.endswith('_category'):
         help_text = getattr(context["object"], field.replace("_category", "_note"))

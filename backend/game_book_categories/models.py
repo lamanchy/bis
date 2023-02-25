@@ -3,23 +3,13 @@ from django.db.models import *
 from translation.translate import translate_model
 
 
-@translate_model
-class Tag(Model):
-    name = CharField(max_length=15)
-    emoji = CharField(max_length=1)
-
-    class Meta:
-        ordering = 'id',
-
-    def __str__(self):
-        return f"{self.emoji} {self.name}"
 
 
 @translate_model
 class BaseCategory(Model):
     name = CharField(max_length=30)
     slug = SlugField()
-    description = CharField(max_length=120)
+    description = CharField(max_length=120, blank=True)
     emoji = CharField(max_length=3)
 
     class Meta:
@@ -28,6 +18,11 @@ class BaseCategory(Model):
 
     def __str__(self):
         return f"{self.emoji} {self.name}"
+
+@translate_model
+class Tag(BaseCategory):
+    name = CharField(max_length=15)
+
 
 @translate_model
 class PhysicalCategory(BaseCategory):

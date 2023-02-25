@@ -227,11 +227,44 @@ class Command(BaseCommand):
         ))
 
         # good emoji overview at https://www.piliapp.com/emoji/list/
-        tags = ['🧊icebreaker', '🤝seznamka', '🌪dynamix', '🙏důvěrovka', '🎮simulační', '📈strategie', '🐁drobnička',
-                '🌱eko', '🗣diskuzní', '🤕orvo', '🦄larp', '🪜team building', '🎨kreativní', '🤬psycho', '🔎reflexe',
-                '🌙noční']
-        for tag in tags:
-            Tag.objects.update_or_create(name=tag[1:], defaults=dict(emoji=tag[0]))
+        Tag.objects.update_or_create(slug="icebreaker", defaults=dict(
+            emoji="🧊", name="icebreaker", description="Prolomení nervozity, uvolnění účastníků, tvoření skupiny z jednotlivců"))
+        Tag.objects.update_or_create(slug="meet", defaults=dict(
+            emoji="🤝", name="seznamka", description=""))
+        Tag.objects.update_or_create(slug="dynamix", defaults=dict(
+            emoji="🌪", name="dynamix", description=""))
+        Tag.objects.update_or_create(slug="trust", defaults=dict(
+            emoji="🙏", name="důvěrovka", description="Buduje či rozvíjí důvěru mezi účastníky"))
+        Tag.objects.update_or_create(slug="simul", defaults=dict(
+            emoji="🎮", name="simulační", description="Ať běhačka či deskovka, hra simuluje reálný život"))
+        Tag.objects.update_or_create(slug="strategy", defaults=dict(
+            emoji="📈", name="strategie", description=""))
+        Tag.objects.update_or_create(slug="small", defaults=dict(
+            emoji="🐁", name="drobnička", description="Na výplň prostojů, jednoduchá, na uvolnění"))
+        Tag.objects.update_or_create(slug="enviro", defaults=dict(
+            emoji="🌱", name="enviro", description="Program obsahuje smysluplnou enviro tématiku"))
+        Tag.objects.update_or_create(slug="discuss", defaults=dict(
+            emoji="🗣", name="diskuzní", description=""))
+        Tag.objects.update_or_create(slug="orvo", defaults=dict(
+            emoji="🤕", name="orvo", description="Oblečení nemusí zůstat v původním stavu"))
+        Tag.objects.update_or_create(slug="larp", defaults=dict(
+            emoji="🎭", name="larp", description=""))
+        Tag.objects.update_or_create(slug="team-building", defaults=dict(
+            emoji="🪜", name="team building", description=""))
+        Tag.objects.update_or_create(slug="creative", defaults=dict(
+            emoji="🎨", name="kreativní", description=""))
+        Tag.objects.update_or_create(slug="vrchol", defaults=dict(
+            emoji="🤬", name="vrcholovka", description="Vrchol akce, ať fyzický, psychický či atmosférický"))
+        Tag.objects.update_or_create(slug="reflexe", defaults=dict(
+            emoji="🔎", name="reflexe", description="Metodika pro vedení reflexe programu"))
+        Tag.objects.update_or_create(slug="night", defaults=dict(
+            emoji="🌙", name="noční", description=""))
+        Tag.objects.update_or_create(slug="atmo", defaults=dict(
+            emoji="🎆", name="s atmoškou", description="Programy tvořící atmosféru"))
+        Tag.objects.update_or_create(slug="cipher", defaults=dict(
+            emoji="📝", name="šifrovačka", description=""))
+        Tag.objects.update_or_create(slug="warm-up", defaults=dict(
+            emoji="🤸", name="rozcvička", description="Hodí se po ránu"))
 
         PhysicalCategory.objects.update_or_create(slug="minimal", defaults=dict(
             emoji="🧘", name="Na místě", description="Programy sedící či s minimem pohybu mezi účasníky"))
@@ -253,7 +286,7 @@ class Command(BaseCommand):
             emoji="💔", name="Emočně náročný", description="Přemýšlecí otázky, řešení hodnot, pocitů, sdílení"))
         MentalCategory.objects.update_or_create(slug="hardcore", defaults=dict(
             emoji="🤬", name="Psycho",
-            description="Kombinace náročných prvků, narušování komforní zóny, nutnost aktivně řešit psychickou bezpečnost"))
+            description="Fyzicky i psychicky náročný, narušování komforní zóny, nutnost řešit psychickou bezpečnost"))
 
         LocationCategory.objects.update_or_create(slug="tearoom", defaults=dict(
             emoji="🫖", name="Čajovna",
@@ -315,7 +348,7 @@ class Command(BaseCommand):
             description="Program rozprostřený přes několik dní, většinou na pozadí jiných programů"))
 
         PreparationLengthCategory.objects.update_or_create(slug="enough_to_read", defaults=dict(
-            emoji="⚡", name="Stačí přečíst", description="Zkušený org přečte, a program rovnou uvede"))
+            emoji="⚡", name="Stačí přečíst pravidla", description="Zkušený org přečte, a program rovnou uvede"))
         PreparationLengthCategory.objects.update_or_create(slug="need_to_study", defaults=dict(
             emoji="🧘", name="Třeba chvíle klidu", description="Netriviální, potřeba pořádně přečíst a pochopit"))
         PreparationLengthCategory.objects.update_or_create(slug="training", defaults=dict(

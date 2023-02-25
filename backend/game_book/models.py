@@ -4,6 +4,7 @@ from uuid import uuid4
 from django.core.exceptions import ValidationError
 from django.db.models import *
 from django.urls import reverse
+from tinymce.models import HTMLField
 
 from administration_units.models import AdministrationUnit
 from bis.models import User
@@ -66,11 +67,12 @@ class Game(BaseModel):
     organizers_number_note = TextField(blank=True)
 
     # description
+    goal = HTMLField(blank=True)
     short_description = CharField(max_length=250)
-    goal = TextField(blank=True)
-    description = TextField()
-    motivation = TextField(blank=True)
-    notes = TextField(blank=True)
+    motivation = HTMLField(blank=True)
+    description = HTMLField()
+    material = HTMLField(blank=True)
+    notes = HTMLField(blank=True)
 
     def clean(self):
         if not self.is_original and not self.origin:

@@ -41,15 +41,16 @@
             {% game_detail_field "preparation_length_category" %}
             {% game_detail_field "material_requirement_category" %}
             {% game_detail_field "organizers_number_category" %}
-            {% game_detail_field "short_description" %}
             {% game_detail_field "goal" %}
-            {% game_detail_field "description" %}
+            {% game_detail_field "short_description" %}
             {% game_detail_field "motivation" %}
+            {% game_detail_field "description" %}
+            {% game_detail_field "material" %}
             {% game_detail_field "notes" %}
 
             <h5>Soubory:</h5>
             {% for file in object.files.all %}
-                <a href="{{ file.file.url }}">{{ file.filename }}</a>
+                <a href="{{ file.file.url }}" target="_blank">{{ file.filename }}</a>
             {% endfor %}
 
             <h5>Komentáře:</h5>
@@ -75,7 +76,7 @@
                     <div class="col">{{ comment.is_hidden }}</div>
                     <div class="col">
                         {% for file in comment.files.all %}
-                            <div><a href="{{ file.file.url }}">{{ file.filename }}</a></div>
+                            <div><a href="{{ file.file.url }}" target="_blank">{{ file.filename }}</a></div>
                         {% endfor %}
                     </div>
                 </div>

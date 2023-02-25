@@ -104,6 +104,7 @@ class FormsetHandlingMixin:
 
         # when not ok, return form response
         if response.status_code != 302:
+            messages.error(request, "Chyba v uložení, zkontroluj data")
             return response
 
         formset = self.formset_class(request.POST, request.FILES, instance=self.object)
@@ -112,6 +113,7 @@ class FormsetHandlingMixin:
             messages.info(request, "Úspěšně uloženo")
             return response
 
+        messages.error(request, "Chyba v uložení, zkontroluj soubory")
         return self.render_to_response(self.get_context_data(formset=formset))
 
 
@@ -151,6 +153,7 @@ class GameView(ModelFormMixin, DetailView):
         """
         form = self.get_form()
         if not form.is_valid():
+            messages.error(request, "Chyba v uložení komentáře, zkontroluj data")
             return self.form_invalid(form)
 
         form.instance.author = self.request.user
@@ -158,11 +161,12 @@ class GameView(ModelFormMixin, DetailView):
 
         formset = self.formset_class(request.POST, request.FILES, instance=form.instance)
         if not formset.is_valid():
+            messages.error(request, "Chyba v uložení komentáře, zkontroluj data")
             return self.render_to_response(self.get_context_data(formset=formset))
 
         form.save()
         formset.save()
-        messages.info(request, "Úspěšně uloženo")
+        messages.info(request, "Komentář vytvořen")
         return self.form_valid(form)
 
     # PUT is a valid HTTP verb for creating (with a known URL) or editing an
